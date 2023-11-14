@@ -124,3 +124,4 @@ export default function NoteCollection(props) {
     </div>
   );
 }
+
