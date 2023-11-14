@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3redoapp2storagecf1f1f50",
+  "bucketName": "redoapp2-storage-cf1f1f50",
+  "policyUUID": "fdd81544",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}
