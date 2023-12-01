@@ -8,7 +8,7 @@
 import * as React from "react";
 import { getOverrideProps } from "./utils";
 import { Flex, Image, Text } from "@aws-amplify/ui-react";
-export default function NoteCard(props) {
+export default function UINoteCard(props) {
   const { note, overrides, ...rest } = props;
   return (
     <Flex
@@ -21,12 +21,12 @@ export default function NoteCard(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      {...getOverrideProps(overrides, "NoteCard")}
+      {...getOverrideProps(overrides, "UINoteCard")}
       {...rest}
     >
       <Image
         width="unset"
-        height="160px"
+        height="408px"
         display="block"
         gap="unset"
         alignItems="unset"
@@ -63,7 +63,7 @@ export default function NoteCard(props) {
           alignSelf="stretch"
           position="relative"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Text Group")}
+          {...getOverrideProps(overrides, "Main Text")}
         >
           <Text
             fontFamily="Inter"
@@ -85,13 +85,13 @@ export default function NoteCard(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children={note?.name}
-            {...getOverrideProps(overrides, "site name")}
+            {...getOverrideProps(overrides, "Note Name")}
           ></Text>
           <Text
             fontFamily="Inter"
             fontSize="16px"
             fontWeight="400"
-            color="rgba(13,26,38,1)"
+            color="rgba(48,64,80,1)"
             lineHeight="24px"
             textAlign="left"
             display="block"
@@ -108,11 +108,11 @@ export default function NoteCard(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children={note?.description}
-            {...getOverrideProps(overrides, "address")}
+            {...getOverrideProps(overrides, "Note Link")}
           ></Text>
           <Text
             fontFamily="Inter"
-            fontSize="14px"
+            fontSize="16px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
             lineHeight="24px"
@@ -120,6 +120,7 @@ export default function NoteCard(props) {
             display="block"
             direction="column"
             justifyContent="unset"
+            letterSpacing="0.01px"
             width="unset"
             height="unset"
             gap="unset"
@@ -130,7 +131,7 @@ export default function NoteCard(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children={note?.author}
-            {...getOverrideProps(overrides, "author")}
+            {...getOverrideProps(overrides, "Note User")}
           ></Text>
         </Flex>
       </Flex>

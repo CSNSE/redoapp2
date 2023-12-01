@@ -23,7 +23,7 @@
     }
   },
   "auth": {
-    "redoapp272cf94be": {
+    "redoapp2": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -39,7 +39,9 @@
           "EMAIL"
         ],
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]

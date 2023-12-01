@@ -1,36 +1,75 @@
-import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
+import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
+// @ts-ignore
+import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
 
 
-type WidgetMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type DogMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-export declare class Widget {
+type EagerEquation = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Equation, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
   readonly id: string;
-  readonly wid?: string | null;
-  readonly name?: string | null;
-  readonly src?: string | null;
+  readonly equation?: string | null;
+  readonly intercepts?: string | null;
+  readonly domain?: string | null;
+  readonly range?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Widget, WidgetMetaData>);
-  static copyOf(source: Widget, mutator: (draft: MutableModel<Widget, WidgetMetaData>) => MutableModel<Widget, WidgetMetaData> | void): Widget;
 }
 
-export declare class Dog {
+type LazyEquation = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Equation, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
   readonly id: string;
-  readonly fid?: string | null;
-  readonly name?: string | null;
-  readonly src?: string | null;
-  readonly user?: string | null;
+  readonly equation?: string | null;
+  readonly intercepts?: string | null;
+  readonly domain?: string | null;
+  readonly range?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Dog, DogMetaData>);
-  static copyOf(source: Dog, mutator: (draft: MutableModel<Dog, DogMetaData>) => MutableModel<Dog, DogMetaData> | void): Dog;
+}
+
+export declare type Equation = LazyLoading extends LazyLoadingDisabled ? EagerEquation : LazyEquation
+
+export declare const Equation: (new (init: ModelInit<Equation>) => Equation) & {
+  copyOf(source: Equation, mutator: (draft: MutableModel<Equation>) => MutableModel<Equation> | void): Equation;
+}
+
+type EagerNote = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Note, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name: string;
+  readonly description?: string | null;
+  readonly image?: string | null;
+  readonly author?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyNote = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Note, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name: string;
+  readonly description?: string | null;
+  readonly image?: string | null;
+  readonly author?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Note = LazyLoading extends LazyLoadingDisabled ? EagerNote : LazyNote
+
+export declare const Note: (new (init: ModelInit<Note>) => Note) & {
+  copyOf(source: Note, mutator: (draft: MutableModel<Note>) => MutableModel<Note> | void): Note;
 }

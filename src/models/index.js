@@ -4,9 +4,9 @@ import { schema } from './schema';
 
 
 
-const { Widget, Dog } = initSchema(schema);
+const { Equation, Note } = initSchema(schema);
 
 export {
-  Widget,
-  Dog
+  Equation,
+  Note
 };

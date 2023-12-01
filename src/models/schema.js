@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Widget": {
-            "name": "Widget",
+        "Equation": {
+            "name": "Equation",
             "fields": {
                 "id": {
                     "name": "id",
@@ -10,22 +10,29 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "wid": {
-                    "name": "wid",
+                "equation": {
+                    "name": "equation",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "name": {
-                    "name": "name",
+                "intercepts": {
+                    "name": "intercepts",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "src": {
-                    "name": "src",
+                "domain": {
+                    "name": "domain",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "range": {
+                    "name": "range",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -49,7 +56,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Widgets",
+            "pluralName": "Equations",
             "attributes": [
                 {
                     "type": "model",
@@ -73,8 +80,8 @@ export const schema = {
                 }
             ]
         },
-        "Dog": {
-            "name": "Dog",
+        "Note": {
+            "name": "Note",
             "fields": {
                 "id": {
                     "name": "id",
@@ -83,31 +90,31 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "fid": {
-                    "name": "fid",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "name": {
                     "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
-                "src": {
-                    "name": "src",
+                "description": {
+                    "name": "description",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "user": {
-                    "name": "user",
+                "image": {
+                    "name": "image",
                     "isArray": false,
-                    "type": "ID",
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "author": {
+                    "name": "author",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -129,7 +136,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Dogs",
+            "pluralName": "Notes",
             "attributes": [
                 {
                     "type": "model",
@@ -156,5 +163,6 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "76bff95070abacf8728a9264021b0055"
+    "codegenVersion": "3.4.4",
+    "version": "5a078e6140e87f94c51f67f8e187b392"
 };

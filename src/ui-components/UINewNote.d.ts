@@ -5,7 +5,9 @@
  **************************************************************************/
 
 import * as React from "react";
-import { ButtonProps, DividerProps, FlexProps, IconProps, ImageProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { Note } from "../models";
+import { MyIconProps } from "./MyIcon";
+import { ButtonProps, FlexProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -21,20 +23,21 @@ export declare type UINewNoteOverridesProps = {
     UINewNote?: PrimitiveOverrideProps<FlexProps>;
     Content?: PrimitiveOverrideProps<FlexProps>;
     "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
-    Icon?: PrimitiveOverrideProps<ViewProps>;
-    Vector?: PrimitiveOverrideProps<IconProps>;
-    Create?: PrimitiveOverrideProps<TextProps>;
-    Divider40472417?: PrimitiveOverrideProps<DividerProps>;
+    MyIcon?: MyIconProps;
+    "New Note"?: PrimitiveOverrideProps<TextProps>;
     Profile?: PrimitiveOverrideProps<FlexProps>;
-    image?: PrimitiveOverrideProps<ImageProps>;
+    image?: PrimitiveOverrideProps<ViewProps>;
+    "Upload New Image"?: PrimitiveOverrideProps<TextProps>;
     Forms?: PrimitiveOverrideProps<FlexProps>;
-    TextField40472422?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField40472423?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField40472424?: PrimitiveOverrideProps<TextFieldProps>;
-    Divider40472425?: PrimitiveOverrideProps<DividerProps>;
+    TextField38473414?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField38473415?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField3991529?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField38473416?: PrimitiveOverrideProps<TextFieldProps>;
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type UINewNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
+    note?: Note;
+} & {
     overrides?: UINewNoteOverridesProps | undefined | null;
 }>;
 export default function UINewNote(props: UINewNoteProps): React.ReactElement;

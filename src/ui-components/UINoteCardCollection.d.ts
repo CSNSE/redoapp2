@@ -5,7 +5,8 @@
  **************************************************************************/
 
 import * as React from "react";
-import { FlexProps, IconProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { UINoteCardProps } from "./UINoteCard";
+import { CollectionProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -17,16 +18,17 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type NavBarOverridesProps = {
-    NavBar?: PrimitiveOverrideProps<FlexProps>;
-    image?: PrimitiveOverrideProps<ImageProps>;
-    "Frame 321"?: PrimitiveOverrideProps<FlexProps>;
-    text?: PrimitiveOverrideProps<TextProps>;
-    Frame?: PrimitiveOverrideProps<ViewProps>;
-    Vector407253?: PrimitiveOverrideProps<IconProps>;
-    Vector407254?: PrimitiveOverrideProps<IconProps>;
+export declare type UINoteCardCollectionOverridesProps = {
+    UINoteCardCollection?: PrimitiveOverrideProps<CollectionProps>;
+    UINoteCard?: UINoteCardProps;
 } & EscapeHatchProps;
-export declare type NavBarProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: NavBarOverridesProps | undefined | null;
+export declare type UINoteCardCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
+    items?: any[];
+    overrideItems?: (collectionItem: {
+        item: any;
+        index: number;
+    }) => UINoteCardProps;
+} & {
+    overrides?: UINoteCardCollectionOverridesProps | undefined | null;
 }>;
-export default function NavBar(props: NavBarProps): React.ReactElement;
+export default function UINoteCardCollection(props: UINoteCardCollectionProps): React.ReactElement;

@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "redoapp272cf94be_identitypool_72cf94be",
+    "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "redoap72cf94be",
-    "userPoolName": "redoapp272cf94be_userpool_72cf94be",
+    "resourceNameTruncated": "redoape3dd8952",
+    "userPoolName": "redoapp2",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -25,21 +25,38 @@
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
-    "userpoolClientWriteAttributes": [
-      "email"
-    ],
-    "userpoolClientReadAttributes": [
-      "email"
-    ],
-    "userpoolClientLambdaRole": "redoap72cf94be_userpoolclient_lambda_role",
+    "userpoolClientWriteAttributes": [],
+    "userpoolClientReadAttributes": [],
+    "userpoolClientLambdaRole": "redoape3dd8952_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "72cf94be",
-    "resourceName": "redoapp272cf94be",
+    "sharedId": "e3dd8952",
+    "resourceName": "redoapp2",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
-    "userPoolGroupList": [],
     "serviceName": "Cognito",
+    "usernameAttributes": [
+      "email"
+    ],
+    "useDefault": "default",
+    "userPoolGroups": false,
+    "userPoolGroupList": [],
+    "adminQueries": false,
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": [],
+    "hostedUI": false,
+    "authProviders": []
   }
 }

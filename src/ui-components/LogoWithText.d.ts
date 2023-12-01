@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { IconProps } from "@aws-amplify/ui-react";
+import { IconProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -17,12 +17,16 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type MyIconOverridesProps = {
-    MyIcon?: PrimitiveOverrideProps<IconProps>;
+export declare type LogoWithTextOverridesProps = {
+    LogoWithText?: PrimitiveOverrideProps<ViewProps>;
+    logo?: PrimitiveOverrideProps<ViewProps>;
+    Union?: PrimitiveOverrideProps<IconProps>;
+    Vector39193044?: PrimitiveOverrideProps<IconProps>;
+    Vector39193045?: PrimitiveOverrideProps<IconProps>;
 } & EscapeHatchProps;
-export declare type MyIconProps = React.PropsWithChildren<Partial<IconProps> & {
-    type?: "alert" | "arrow-right" | "authentication" | "bookmark_border" | "chat" | "chat-bubble-outline" | "checkmark" | "close" | "content" | "dashboard" | "data" | "delete" | "edit" | "email" | "favorite" | "favorite_border" | "file" | "function" | "group" | "home" | "info" | "instagram" | "location" | "more_horiz" | "more_vert" | "notification" | "phone" | "reply" | "send" | "settings" | "share" | "shopping_bag" | "shuffle" | "storage" | "twitter" | "warning";
+export declare type LogoWithTextProps = React.PropsWithChildren<Partial<ViewProps> & {
+    color?: "brand" | "neutral";
 } & {
-    overrides?: MyIconOverridesProps | undefined | null;
+    overrides?: LogoWithTextOverridesProps | undefined | null;
 }>;
-export default function MyIcon(props: MyIconProps): React.ReactElement;
+export default function LogoWithText(props: LogoWithTextProps): React.ReactElement;
