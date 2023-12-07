@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { MyIconProps } from "./MyIcon";
-import { FlexProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { FlexProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 import { ButtondefaultfalseprimaryProps } from "./Buttondefaultfalseprimary";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -19,21 +19,20 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type UIEditNoteOverridesProps = {
-    UIEditNote?: PrimitiveOverrideProps<FlexProps>;
+export declare type EquationSaveNoteOverridesProps = {
+    EquationSaveNote?: PrimitiveOverrideProps<FlexProps>;
     Content?: PrimitiveOverrideProps<FlexProps>;
     "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
-    "Frame 444"?: PrimitiveOverrideProps<ViewProps>;
     MyIcon?: MyIconProps;
     "Edit Note"?: PrimitiveOverrideProps<TextProps>;
     Forms?: PrimitiveOverrideProps<FlexProps>;
-    TextField4061927?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061928?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061929?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061930?: PrimitiveOverrideProps<TextFieldProps>;
-    "Button/default/false/primary"?: ButtondefaultfalseprimaryProps;
+    TextField40311858?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40311859?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40311860?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40311861?: PrimitiveOverrideProps<TextFieldProps>;
+    "Save/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
-export declare type UIEditNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: UIEditNoteOverridesProps | undefined | null;
+export declare type EquationSaveNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
+    overrides?: EquationSaveNoteOverridesProps | undefined | null;
 }>;
-export default function UIEditNote(props: UIEditNoteProps): React.ReactElement;
+export default function EquationSaveNote(props: EquationSaveNoteProps): React.ReactElement;

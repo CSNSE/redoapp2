@@ -6,16 +6,16 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Note } from "../models";
+import { Equation } from "../models";
 import { getOverrideProps, useDataStoreBinding } from "./utils";
-import UINoteCard from "./UINoteCard";
+import EquationNoteCard from "./EquationNoteCard";
 import { Collection } from "@aws-amplify/ui-react";
-export default function UINoteCardCollection(props) {
+export default function EquationNoteCardCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const [items, setItems] = React.useState(undefined);
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
-    model: Note,
+    model: Equation,
   }).items;
   React.useEffect(() => {
     if (itemsProp !== undefined) {
@@ -30,21 +30,19 @@ export default function UINoteCardCollection(props) {
       isSearchable={true}
       isPaginated={true}
       searchPlaceholder="Search..."
+      itemsPerPage={3}
       direction="row"
       alignItems="stretch"
       items={items || []}
-      {...getOverrideProps(overrides, "UINoteCardCollection")}
+      {...getOverrideProps(overrides, "EquationNoteCardCollection")}
       {...rest}
     >
       {(item, index) => (
-        <UINoteCard
-          note={item}
-          height="auto"
-          width="auto"
-          margin="4px 4px 4px 4px"
+        <EquationNoteCard
+          equation={item}
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
-        ></UINoteCard>
+        ></EquationNoteCard>
       )}
     </Collection>
   );

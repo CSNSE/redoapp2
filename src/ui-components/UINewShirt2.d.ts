@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { MyIconProps } from "./MyIcon";
-import { FlexProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { FlexProps, SelectFieldProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 import { ButtondefaultfalseprimaryProps } from "./Buttondefaultfalseprimary";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -19,21 +19,22 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type UIEditNoteOverridesProps = {
-    UIEditNote?: PrimitiveOverrideProps<FlexProps>;
+export declare type UINewShirt2OverridesProps = {
+    UINewShirt2?: PrimitiveOverrideProps<FlexProps>;
     Content?: PrimitiveOverrideProps<FlexProps>;
     "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
-    "Frame 444"?: PrimitiveOverrideProps<ViewProps>;
+    "Frame 443"?: PrimitiveOverrideProps<ViewProps>;
     MyIcon?: MyIconProps;
-    "Edit Note"?: PrimitiveOverrideProps<TextProps>;
+    "New Shirt"?: PrimitiveOverrideProps<TextProps>;
+    SelectField?: PrimitiveOverrideProps<SelectFieldProps>;
     Forms?: PrimitiveOverrideProps<FlexProps>;
-    TextField4061927?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061928?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061929?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061930?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4065854?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4065855?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4065856?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4065857?: PrimitiveOverrideProps<TextFieldProps>;
     "Button/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
-export declare type UIEditNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: UIEditNoteOverridesProps | undefined | null;
+export declare type UINewShirt2Props = React.PropsWithChildren<Partial<FlexProps> & {
+    overrides?: UINewShirt2OverridesProps | undefined | null;
 }>;
-export default function UIEditNote(props: UIEditNoteProps): React.ReactElement;
+export default function UINewShirt2(props: UINewShirt2Props): React.ReactElement;

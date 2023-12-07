@@ -10,9 +10,9 @@ import { getOverrideProps, useNavigateAction } from "./utils";
 import LogoWithText from "./LogoWithText";
 import { Button, Flex } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
-export default function NewNavBar(props) {
+export default function EquationNavBar(props) {
   const { overrides, ...rest } = props;
-  const frameThreeTwoOneThreeNineFourZeroOneNineFourNineOnClick =
+  const frameThreeTwoOneFourZeroNineOneEightFourThreeOnClick =
     useNavigateAction({ type: "url", url: "/NewNote" });
   const buttonOnClick = useNavigateAction({ type: "url", url: "/NewNote" });
   return (
@@ -27,7 +27,7 @@ export default function NewNavBar(props) {
       boxShadow="0px 2px 6px rgba(0.05098039284348488, 0.10196078568696976, 0.14901961386203766, 0.15000000596046448)"
       padding="24px 32px 24px 32px"
       backgroundColor="rgba(255,255,255,1)"
-      {...getOverrideProps(overrides, "NewNavBar")}
+      {...getOverrideProps(overrides, "EquationNavBar")}
       {...rest}
     >
       <LogoWithText
@@ -55,7 +55,7 @@ export default function NewNavBar(props) {
         basis="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        {...getOverrideProps(overrides, "Frame 32139401944")}
+        {...getOverrideProps(overrides, "Frame 3214091841")}
       ></Flex>
       <MyIcon
         width="24px"
@@ -84,9 +84,9 @@ export default function NewNavBar(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         onClick={() => {
-          frameThreeTwoOneThreeNineFourZeroOneNineFourNineOnClick();
+          frameThreeTwoOneFourZeroNineOneEightFourThreeOnClick();
         }}
-        {...getOverrideProps(overrides, "Frame 32139401949")}
+        {...getOverrideProps(overrides, "Frame 3214091843")}
       >
         <Button
           width="29px"

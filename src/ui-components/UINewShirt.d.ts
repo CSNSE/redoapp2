@@ -19,21 +19,22 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type UIEditNoteOverridesProps = {
-    UIEditNote?: PrimitiveOverrideProps<FlexProps>;
+export declare type UINewShirtOverridesProps = {
+    UINewShirt?: PrimitiveOverrideProps<FlexProps>;
     Content?: PrimitiveOverrideProps<FlexProps>;
     "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
-    "Frame 444"?: PrimitiveOverrideProps<ViewProps>;
+    "Frame 443"?: PrimitiveOverrideProps<ViewProps>;
     MyIcon?: MyIconProps;
-    "Edit Note"?: PrimitiveOverrideProps<TextProps>;
+    "New Shirt"?: PrimitiveOverrideProps<TextProps>;
     Forms?: PrimitiveOverrideProps<FlexProps>;
-    TextField4061927?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061928?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061929?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField4061930?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40411090?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40411091?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40411092?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField40411094?: PrimitiveOverrideProps<TextFieldProps>;
+    "Frame 445"?: PrimitiveOverrideProps<ViewProps>;
     "Button/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
-export declare type UIEditNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: UIEditNoteOverridesProps | undefined | null;
+export declare type UINewShirtProps = React.PropsWithChildren<Partial<FlexProps> & {
+    overrides?: UINewShirtOverridesProps | undefined | null;
 }>;
-export default function UIEditNote(props: UIEditNoteProps): React.ReactElement;
+export default function UINewShirt(props: UINewShirtProps): React.ReactElement;
