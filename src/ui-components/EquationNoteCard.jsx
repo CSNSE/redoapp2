@@ -6,11 +6,15 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import MyIcon from "./MyIcon";
 import { Flex, Text, View } from "@aws-amplify/ui-react";
 export default function EquationNoteCard(props) {
   const { equation, overrides, ...rest } = props;
+  const frameFourFourZeroOnClick = useNavigateAction({
+    type: "url",
+    url: "/update",
+  });
   return (
     <Flex
       gap="0"
@@ -88,6 +92,9 @@ export default function EquationNoteCard(props) {
                 shrink="0"
                 position="relative"
                 padding="0px 0px 0px 0px"
+                onClick={() => {
+                  frameFourFourZeroOnClick();
+                }}
                 {...getOverrideProps(overrides, "Frame 440")}
               >
                 <MyIcon

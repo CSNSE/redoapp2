@@ -50,6 +50,7 @@ export declare type EquationUpdateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: EquationUpdateFormInputValues) => EquationUpdateFormInputValues;
     onSuccess?: (fields: EquationUpdateFormInputValues) => void;
     onError?: (fields: EquationUpdateFormInputValues, errorMessage: string) => void;
+    onCancel?: () => void;
     onChange?: (fields: EquationUpdateFormInputValues) => EquationUpdateFormInputValues;
     onValidate?: EquationUpdateFormValidationValues;
 } & React.CSSProperties>;
