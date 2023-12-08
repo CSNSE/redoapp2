@@ -13,7 +13,7 @@ export default function EquationNoteCard(props) {
   const { equation, overrides, ...rest } = props;
   const frameFourFourZeroOnClick = useNavigateAction({
     type: "url",
-    url: "/update",
+    url: "/update/:cid",
   });
   return (
     <Flex

@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField, useTheme } from "@aws-amplify/ui-react";
 import { Equation } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify/datastore";
@@ -23,6 +23,7 @@ export default function EquationUpdateForm(props) {
     overrides,
     ...rest
   } = props;
+  const { tokens } = useTheme();
   const initialValues = {
     equation: "",
     intercepts: "",
@@ -81,7 +82,7 @@ export default function EquationUpdateForm(props) {
   return (
     <Grid
       as="form"
-      rowGap="15px"
+      rowGap={tokens.space.xs.value}
       columnGap="15px"
       padding="20px"
       onSubmit={async (event) => {
