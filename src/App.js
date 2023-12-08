@@ -15,7 +15,7 @@ class App extends Component {
                 <Route exact path='/' element={<div><EquationNavBar/><EquationNoteCardCollection isPaginated itemsPerPage={3} /></div>}/>
                 <Route exact path='/NewNote' element={<EquationCreateForm/>}/>
                 <Route exact path='/create' element={<EquationNewNote/>}/>
-                <Route exact path='/update' element={<EquationUpdateForm/>}/>
+                <Route exact path='/update/:cid' element={<EquationUpdateForm/>}/>
             </Routes>
           </Router>
             </header></div>
