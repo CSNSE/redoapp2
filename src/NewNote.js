@@ -7,7 +7,7 @@ class NewNote extends Component {
         return (<Put />);
     }
 }
-
+//Useless change
   function Put() {
     return (
       <div><header className="App-header">
