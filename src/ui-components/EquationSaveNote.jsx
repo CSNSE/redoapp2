@@ -6,12 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import MyIcon from "./MyIcon";
 import { Flex, Text, TextField } from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
 export default function EquationSaveNote(props) {
-  const { overrides, ...rest } = props;
+  const { eq, overrides, ...rest } = props;
+  const editProfileOnClick = useNavigateAction({ type: "url", url: "\\" });
   return (
     <Flex
       gap="16px"
@@ -51,6 +52,9 @@ export default function EquationSaveNote(props) {
           alignSelf="stretch"
           position="relative"
           padding="0px 0px 0px 0px"
+          onClick={() => {
+            editProfileOnClick();
+          }}
           {...getOverrideProps(overrides, "Edit Profile")}
         >
           <MyIcon

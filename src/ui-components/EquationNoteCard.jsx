@@ -6,14 +6,29 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps, useNavigateAction } from "./utils";
+import { Equation } from "../models";
+import {
+  getOverrideProps,
+  useDataStoreDeleteAction,
+  useNavigateAction,
+} from "./utils";
+import { schema } from "../models/schema";
 import MyIcon from "./MyIcon";
 import { Flex, Text, View } from "@aws-amplify/ui-react";
 export default function EquationNoteCard(props) {
   const { equation, overrides, ...rest } = props;
   const frameFourFourZeroOnClick = useNavigateAction({
     type: "url",
-    url: "/update/:cid",
+    url: `${"/update/"}${equation?.id}`,
+  });
+  const frameFourThreeEightOnClick = useDataStoreDeleteAction({
+    id: equation?.id,
+    model: Equation,
+    schema: schema,
+  });
+  const frameFourThreeEightOnMouseUp = useNavigateAction({
+    type: "url",
+    url: "/",
   });
   return (
     <Flex
@@ -123,6 +138,12 @@ export default function EquationNoteCard(props) {
                 shrink="0"
                 position="relative"
                 padding="0px 0px 0px 0px"
+                onClick={() => {
+                  frameFourThreeEightOnClick();
+                }}
+                onMouseUp={() => {
+                  frameFourThreeEightOnMouseUp();
+                }}
                 {...getOverrideProps(overrides, "Frame 438")}
               >
                 <MyIcon

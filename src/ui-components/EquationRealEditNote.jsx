@@ -6,11 +6,20 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField, useTheme } from "@aws-amplify/ui-react";
 import { Equation } from "../models";
+import {
+  useDataStoreUpdateAction,
+  useNavigateAction,
+  useStateMutationAction,
+} from "./utils";
+import { schema } from "../models/schema";
+import { useEffect } from "react";
+import MyIcon from "./MyIcon";
+import { Button, Grid, Flex, Text, TextField, View, useTheme } from "@aws-amplify/ui-react";
+import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify/datastore";
-export default function EquationUpdateForm(props) {
+export default function EquationRealEditNote(props) {
   const {
     idProp,
     equation: equationModelProp,
@@ -139,9 +148,123 @@ export default function EquationUpdateForm(props) {
       {...getOverrideProps(overrides, "EquationUpdateForm")}
       {...rest}
     >
-      <TextField
-        label="Equation"
-        isRequired={false}
+    <Flex
+      gap="16px"
+      direction="column"
+      width="320px"
+      height="616px"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      position="relative"
+      padding="0px 0px 0px 0px"
+      backgroundColor="rgba(255,255,255,1)"
+      {...getOverrideProps(overrides, "EquationRealEditNote")}
+      {...rest}
+    >
+      <Flex
+        gap="24px"
+        direction="column"
+        width="unset"
+        height="616px"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        shrink="0"
+        alignSelf="stretch"
+        position="relative"
+        padding="24px 24px 24px 24px"
+        {...getOverrideProps(overrides, "Content")}
+      >
+        <Flex
+          gap="16px"
+          direction="row"
+          width="unset"
+          height="unset"
+          justifyContent="flex-start"
+          alignItems="center"
+          shrink="0"
+          alignSelf="stretch"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          {...getOverrideProps(overrides, "Edit Profile")}
+        >
+          <View
+            width="24px"
+            height="24px"
+            display="block"
+            gap="unset"
+            alignItems="unset"
+            justifyContent="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            onClick={() => {
+              //frameFourFourFourOnClick();
+            }}
+            {...getOverrideProps(overrides, "Frame 444")}
+          >
+            <MyIcon
+              width="24px"
+              height="24px"
+              display="block"
+              gap="unset"
+              alignItems="unset"
+              justifyContent="unset"
+              overflow="hidden"
+              position="absolute"
+              top="0px"
+              left="0px"
+              padding="0px 0px 0px 0px"
+              type="close"
+              {...getOverrideProps(overrides, "MyIcon")}
+            ></MyIcon>
+          </View>
+          <Text
+            fontFamily="Inter"
+            fontSize="16px"
+            fontWeight="700"
+            color="rgba(13,26,38,1)"
+            lineHeight="20px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="unset"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Edit Equation"
+            {...getOverrideProps(overrides, "Edit Equation")}
+          ></Text>
+        </Flex>
+        <Flex
+          gap="16px"
+          direction="column"
+          width="unset"
+          height="unset"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          shrink="0"
+          alignSelf="stretch"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          {...getOverrideProps(overrides, "Forms")}
+        >
+          <TextField
+            width="unset"
+            height="unset"
+            label="Equation"
+            placeholder="x^2+8x+16"
+            shrink="0"
+            alignSelf="stretch"
+            size="default"
+            isDisabled={false}
+            labelHidden={false}
+            variation="default"
+            isRequired={false}
         isReadOnly={false}
         value={equation}
         onChange={(e) => {
@@ -165,10 +288,19 @@ export default function EquationUpdateForm(props) {
         errorMessage={errors.equation?.errorMessage}
         hasError={errors.equation?.hasError}
         {...getOverrideProps(overrides, "equation")}
-      ></TextField>
-      <TextField
-        label="Intercepts"
-        isRequired={false}
+          ></TextField>
+          <TextField
+            width="unset"
+            height="unset"
+            label="Intercepts"
+            placeholder="x = 6,8   y = 0"
+            shrink="0"
+            alignSelf="stretch"
+            size="default"
+            isDisabled={false}
+            labelHidden={false}
+            variation="default"
+            isRequired={false}
         isReadOnly={false}
         value={intercepts}
         onChange={(e) => {
@@ -192,10 +324,19 @@ export default function EquationUpdateForm(props) {
         errorMessage={errors.intercepts?.errorMessage}
         hasError={errors.intercepts?.hasError}
         {...getOverrideProps(overrides, "intercepts")}
-      ></TextField>
-      <TextField
-        label="Domain"
-        isRequired={false}
+          ></TextField>
+          <TextField
+            width="unset"
+            height="unset"
+            label="Domain"
+            placeholder="[1,4]"
+            shrink="0"
+            alignSelf="stretch"
+            size="default"
+            isDisabled={false}
+            labelHidden={false}
+            variation="default"
+            isRequired={false}
         isReadOnly={false}
         value={domain}
         onChange={(e) => {
@@ -219,10 +360,19 @@ export default function EquationUpdateForm(props) {
         errorMessage={errors.domain?.errorMessage}
         hasError={errors.domain?.hasError}
         {...getOverrideProps(overrides, "domain")}
-      ></TextField>
-      <TextField
-        label="Range"
-        isRequired={false}
+          ></TextField>
+          <TextField
+            width="unset"
+            height="unset"
+            label="Range"
+            placeholder="[5,6]"
+            shrink="0"
+            alignSelf="stretch"
+            size="default"
+            isDisabled={false}
+            labelHidden={false}
+            variation="default"
+            isRequired={false}
         isReadOnly={false}
         value={range}
         onChange={(e) => {
@@ -246,33 +396,23 @@ export default function EquationUpdateForm(props) {
         errorMessage={errors.range?.errorMessage}
         hasError={errors.range?.hasError}
         {...getOverrideProps(overrides, "range")}
-      ></TextField>
-      <Flex
-        justifyContent="space-between"
-        {...getOverrideProps(overrides, "CTAFlex")}
-      >
-        <Button
-          children="Reset"
-          type="reset"
-          onClick={(event) => {
-            event.preventDefault();
-            resetStateValues();
+          ></TextField>
+        </Flex>
+        <View
+          width="71px"
+          height="40px"
+          display="block"
+          gap="unset"
+          alignItems="unset"
+          justifyContent="unset"
+          shrink="0"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          onClick={() => {
+            //frameFourThreeEightThreeOnClick();
           }}
-          isDisabled={!(idProp || equationModelProp)}
-          {...getOverrideProps(overrides, "ResetButton")}
-        ></Button>
-        <Flex
-          gap="15px"
-          {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
+          {...getOverrideProps(overrides, "Frame 4383")}
         >
-          <Button
-            children="Cancel"
-            type="button"
-            onClick={() => {
-              onCancel && onCancel();
-            }}
-            {...getOverrideProps(overrides, "CancelButton")}
-          ></Button>
           <Button
             children="Save"
             type="submit"
@@ -283,8 +423,9 @@ export default function EquationUpdateForm(props) {
             }
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
-        </Flex>
+        </View>
       </Flex>
+    </Flex>
     </Grid>
   );
 }

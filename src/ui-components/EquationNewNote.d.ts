@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Equation } from "../models";
 import { MyIconProps } from "./MyIcon";
 import { FlexProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 import { ButtondefaultfalseprimaryProps } from "./Buttondefaultfalseprimary";
@@ -33,6 +34,8 @@ export declare type EquationNewNoteOverridesProps = {
     "Save/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
 export declare type EquationNewNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
+    eqn?: Equation;
+} & {
     overrides?: EquationNewNoteOverridesProps | undefined | null;
 }>;
 export default function EquationNewNote(props: EquationNewNoteProps): React.ReactElement;

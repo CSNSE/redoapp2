@@ -7,7 +7,7 @@
 import * as React from "react";
 import { Equation } from "../models";
 import { MyIconProps } from "./MyIcon";
-import { FlexProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { FlexProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 import { ButtondefaultfalseprimaryProps } from "./Buttondefaultfalseprimary";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -20,22 +20,24 @@ export declare type Variant = {
     overrides: EscapeHatchProps;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type EquationSaveNoteOverridesProps = {
-    EquationSaveNote?: PrimitiveOverrideProps<FlexProps>;
+export declare type EquationRealEditNoteOverridesProps = {
+    EquationRealEditNote?: PrimitiveOverrideProps<FlexProps>;
     Content?: PrimitiveOverrideProps<FlexProps>;
     "Edit Profile"?: PrimitiveOverrideProps<FlexProps>;
+    "Frame 444"?: PrimitiveOverrideProps<ViewProps>;
     MyIcon?: MyIconProps;
-    "Edit Note"?: PrimitiveOverrideProps<TextProps>;
+    "Edit Equation"?: PrimitiveOverrideProps<TextProps>;
     Forms?: PrimitiveOverrideProps<FlexProps>;
-    TextField40311858?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField40311859?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField40311860?: PrimitiveOverrideProps<TextFieldProps>;
-    TextField40311861?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4061927?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4061928?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4061929?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField4061930?: PrimitiveOverrideProps<TextFieldProps>;
+    "Frame 4383"?: PrimitiveOverrideProps<ViewProps>;
     "Save/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
-export declare type EquationSaveNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
-    eq?: Equation;
+export declare type EquationRealEditNoteProps = React.PropsWithChildren<Partial<FlexProps> & {
+    equ?: Equation;
 } & {
-    overrides?: EquationSaveNoteOverridesProps | undefined | null;
+    overrides?: EquationRealEditNoteOverridesProps | undefined | null;
 }>;
-export default function EquationSaveNote(props: EquationSaveNoteProps): React.ReactElement;
+export default function EquationRealEditNote(props: EquationRealEditNoteProps): React.ReactElement;

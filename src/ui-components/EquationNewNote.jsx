@@ -11,7 +11,7 @@ import MyIcon from "./MyIcon";
 import { Flex, Text, TextField } from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
 export default function EquationNewNote(props) {
-  const { overrides, ...rest } = props;
+  const { eqn, overrides, ...rest } = props;
   return (
     <Flex
       gap="16px"
