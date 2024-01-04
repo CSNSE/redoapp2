@@ -8,7 +8,6 @@
 import * as React from "react";
 import { Equation } from "../models";
 import {
-  getOverrideProps,
   useDataStoreUpdateAction,
   useNavigateAction,
   useStateMutationAction,
@@ -16,71 +15,139 @@ import {
 import { schema } from "../models/schema";
 import { useEffect } from "react";
 import MyIcon from "./MyIcon";
-import { Flex, Text, TextField, View } from "@aws-amplify/ui-react";
+import { Button, Grid, Flex, Text, TextField, View, useTheme } from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
+import { DataStore } from "aws-amplify/datastore";
 export default function EquationRealEditNote(props) {
-  const { equ, overrides, ...rest } = props;
-  const [
-    textFieldFourZeroSixOneNineTwoSevenValue,
-    setTextFieldFourZeroSixOneNineTwoSevenValue,
-  ] = useStateMutationAction("");
-  const [
-    textFieldFourZeroSixOneNineTwoEightValue,
-    setTextFieldFourZeroSixOneNineTwoEightValue,
-  ] = useStateMutationAction("");
-  const [
-    textFieldFourZeroSixOneNineTwoNineValue,
-    setTextFieldFourZeroSixOneNineTwoNineValue,
-  ] = useStateMutationAction("");
-  const [
-    textFieldFourZeroSixOneNineThreeZeroValue,
-    setTextFieldFourZeroSixOneNineThreeZeroValue,
-  ] = useStateMutationAction("");
-  const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
-  const frameFourThreeEightThreeOnClick = useDataStoreUpdateAction({
-    fields: {
-      equation: textFieldFourZeroSixOneNineTwoSevenValue,
-      intercepts: textFieldFourZeroSixOneNineTwoEightValue,
-      domain: textFieldFourZeroSixOneNineTwoNineValue,
-      range: textFieldFourZeroSixOneNineThreeZeroValue,
-    },
-    id: equ?.id,
-    model: Equation,
-    schema: schema,
-  });
-  useEffect(() => {
-    if (
-      textFieldFourZeroSixOneNineTwoSevenValue === "" &&
-      equ !== undefined &&
-      equ?.equation !== undefined
-    )
-      setTextFieldFourZeroSixOneNineTwoSevenValue(equ?.equation);
-  }, [equ]);
-  useEffect(() => {
-    if (
-      textFieldFourZeroSixOneNineTwoEightValue === "" &&
-      equ !== undefined &&
-      equ?.intercepts !== undefined
-    )
-      setTextFieldFourZeroSixOneNineTwoEightValue(equ?.intercepts);
-  }, [equ]);
-  useEffect(() => {
-    if (
-      textFieldFourZeroSixOneNineTwoNineValue === "" &&
-      equ !== undefined &&
-      equ?.domain !== undefined
-    )
-      setTextFieldFourZeroSixOneNineTwoNineValue(equ?.domain);
-  }, [equ]);
-  useEffect(() => {
-    if (
-      textFieldFourZeroSixOneNineThreeZeroValue === "" &&
-      equ !== undefined &&
-      equ?.range !== undefined
-    )
-      setTextFieldFourZeroSixOneNineThreeZeroValue(equ?.range);
-  }, [equ]);
+  const {
+    idProp,
+    equation: equationModelProp,
+    onSuccess,
+    onError,
+    onSubmit,
+    onCancel,
+    onValidate,
+    onChange,
+    overrides,
+    ...rest
+  } = props;
+  console.log("thing update got it: " + {idProp});
+  const { tokens } = useTheme();
+  const initialValues = {
+    equation: "",
+    intercepts: "",
+    domain: "",
+    range: "",
+  };
+  const [equation, setEquation] = React.useState(initialValues.equation);
+  const [intercepts, setIntercepts] = React.useState(initialValues.intercepts);
+  const [domain, setDomain] = React.useState(initialValues.domain);
+  const [range, setRange] = React.useState(initialValues.range);
+  const [errors, setErrors] = React.useState({});
+  const resetStateValues = () => {
+    const cleanValues = equationRecord
+      ? { ...initialValues, ...equationRecord }
+      : initialValues;
+    setEquation(cleanValues.equation);
+    setIntercepts(cleanValues.intercepts);
+    setDomain(cleanValues.domain);
+    setRange(cleanValues.range);
+    setErrors({});
+  };
+  const [equationRecord, setEquationRecord] = React.useState(equationModelProp);
+  React.useEffect(() => {
+    const queryData = async () => {
+      const record = idProp
+        ? await DataStore.query(Equation, idProp)
+        : equationModelProp;
+      setEquationRecord(record);
+    };
+    queryData();
+  }, [idProp, equationModelProp]);
+  React.useEffect(resetStateValues, [equationRecord]);
+  const validations = {
+    equation: [],
+    intercepts: [],
+    domain: [],
+    range: [],
+  };
+  const runValidationTasks = async (
+    fieldName,
+    currentValue,
+    getDisplayValue
+  ) => {
+    const value =
+      currentValue && getDisplayValue
+        ? getDisplayValue(currentValue)
+        : currentValue;
+    let validationResponse = validateField(value, validations[fieldName]);
+    const customValidator = fetchByPath(onValidate, fieldName);
+    if (customValidator) {
+      validationResponse = await customValidator(value, validationResponse);
+    }
+    setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
+    return validationResponse;
+  };
   return (
+    <Grid
+      as="form"
+      rowGap={tokens.space.xs.value}
+      columnGap="15px"
+      padding="20px"
+      onSubmit={async (event) => {
+        event.preventDefault();
+        let modelFields = {
+          equation,
+          intercepts,
+          domain,
+          range,
+        };
+        const validationResponses = await Promise.all(
+          Object.keys(validations).reduce((promises, fieldName) => {
+            if (Array.isArray(modelFields[fieldName])) {
+              promises.push(
+                ...modelFields[fieldName].map((item) =>
+                  runValidationTasks(fieldName, item)
+                )
+              );
+              return promises;
+            }
+            promises.push(
+              runValidationTasks(fieldName, modelFields[fieldName])
+            );
+            return promises;
+          }, [])
+        );
+        if (validationResponses.some((r) => r.hasError)) {
+          return;
+        }
+        if (onSubmit) {
+          modelFields = onSubmit(modelFields);
+        }
+        try {
+          Object.entries(modelFields).forEach(([key, value]) => {
+            if (typeof value === "string" && value === "") {
+              modelFields[key] = null;
+            }
+          });
+          await DataStore.save(
+            Equation.copyOf(equationRecord, (updated) => {
+              Object.assign(updated, modelFields);
+            })
+          );
+          if (onSuccess) {
+            onSuccess(modelFields);
+          }
+        } catch (err) {
+          if (onError) {
+            onError(modelFields, err.message);
+          }
+        }
+      }}
+      {...getOverrideProps(overrides, "EquationUpdateForm")}
+      {...rest}
+    >
     <Flex
       gap="16px"
       direction="column"
@@ -131,7 +198,7 @@ export default function EquationRealEditNote(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             onClick={() => {
-              frameFourFourFourOnClick();
+              //frameFourFourFourOnClick();
             }}
             {...getOverrideProps(overrides, "Frame 444")}
           >
@@ -197,11 +264,30 @@ export default function EquationRealEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldFourZeroSixOneNineTwoSevenValue}
-            onChange={(event) => {
-              setTextFieldFourZeroSixOneNineTwoSevenValue(event.target.value);
-            }}
-            {...getOverrideProps(overrides, "TextField4061927")}
+            isRequired={false}
+        isReadOnly={false}
+        value={equation}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              equation: value,
+              intercepts,
+              domain,
+              range,
+            };
+            const result = onChange(modelFields);
+            value = result?.equation ?? value;
+          }
+          if (errors.equation?.hasError) {
+            runValidationTasks("equation", value);
+          }
+          setEquation(value);
+        }}
+        onBlur={() => runValidationTasks("equation", equation)}
+        errorMessage={errors.equation?.errorMessage}
+        hasError={errors.equation?.hasError}
+        {...getOverrideProps(overrides, "equation")}
           ></TextField>
           <TextField
             width="unset"
@@ -214,11 +300,30 @@ export default function EquationRealEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldFourZeroSixOneNineTwoEightValue}
-            onChange={(event) => {
-              setTextFieldFourZeroSixOneNineTwoEightValue(event.target.value);
-            }}
-            {...getOverrideProps(overrides, "TextField4061928")}
+            isRequired={false}
+        isReadOnly={false}
+        value={intercepts}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              equation,
+              intercepts: value,
+              domain,
+              range,
+            };
+            const result = onChange(modelFields);
+            value = result?.intercepts ?? value;
+          }
+          if (errors.intercepts?.hasError) {
+            runValidationTasks("intercepts", value);
+          }
+          setIntercepts(value);
+        }}
+        onBlur={() => runValidationTasks("intercepts", intercepts)}
+        errorMessage={errors.intercepts?.errorMessage}
+        hasError={errors.intercepts?.hasError}
+        {...getOverrideProps(overrides, "intercepts")}
           ></TextField>
           <TextField
             width="unset"
@@ -231,11 +336,30 @@ export default function EquationRealEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldFourZeroSixOneNineTwoNineValue}
-            onChange={(event) => {
-              setTextFieldFourZeroSixOneNineTwoNineValue(event.target.value);
-            }}
-            {...getOverrideProps(overrides, "TextField4061929")}
+            isRequired={false}
+        isReadOnly={false}
+        value={domain}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              equation,
+              intercepts,
+              domain: value,
+              range,
+            };
+            const result = onChange(modelFields);
+            value = result?.domain ?? value;
+          }
+          if (errors.domain?.hasError) {
+            runValidationTasks("domain", value);
+          }
+          setDomain(value);
+        }}
+        onBlur={() => runValidationTasks("domain", domain)}
+        errorMessage={errors.domain?.errorMessage}
+        hasError={errors.domain?.hasError}
+        {...getOverrideProps(overrides, "domain")}
           ></TextField>
           <TextField
             width="unset"
@@ -248,11 +372,30 @@ export default function EquationRealEditNote(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            value={textFieldFourZeroSixOneNineThreeZeroValue}
-            onChange={(event) => {
-              setTextFieldFourZeroSixOneNineThreeZeroValue(event.target.value);
-            }}
-            {...getOverrideProps(overrides, "TextField4061930")}
+            isRequired={false}
+        isReadOnly={false}
+        value={range}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              equation,
+              intercepts,
+              domain,
+              range: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.range ?? value;
+          }
+          if (errors.range?.hasError) {
+            runValidationTasks("range", value);
+          }
+          setRange(value);
+        }}
+        onBlur={() => runValidationTasks("range", range)}
+        errorMessage={errors.range?.errorMessage}
+        hasError={errors.range?.hasError}
+        {...getOverrideProps(overrides, "range")}
           ></TextField>
         </Flex>
         <View
@@ -266,29 +409,23 @@ export default function EquationRealEditNote(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           onClick={() => {
-            frameFourThreeEightThreeOnClick();
+            //frameFourThreeEightThreeOnClick();
           }}
           {...getOverrideProps(overrides, "Frame 4383")}
         >
-          <Buttondefaultfalseprimary
-            display="flex"
-            gap="0"
-            direction="row"
-            width="unset"
-            height="unset"
-            justifyContent="center"
-            alignItems="center"
-            position="absolute"
-            top="0px"
-            left="0px"
-            border="1px SOLID rgba(0,0,0,0)"
-            borderRadius="4px"
-            padding="7px 15px 7px 15px"
-            backgroundColor="rgba(78,165,202,1)"
-            {...getOverrideProps(overrides, "Save/default/false/primary")}
-          ></Buttondefaultfalseprimary>
+          <Button
+            children="Save"
+            type="submit"
+            variation="primary"
+            isDisabled={
+              !(idProp || equationModelProp) ||
+              Object.values(errors).some((e) => e?.hasError)
+            }
+            {...getOverrideProps(overrides, "SubmitButton")}
+          ></Button>
         </View>
       </Flex>
     </Flex>
+    </Grid>
   );
 }
