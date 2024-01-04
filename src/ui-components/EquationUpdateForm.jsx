@@ -12,7 +12,7 @@ import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify/datastore";
 export default function EquationUpdateForm(props) {
   const {
-    idProp,
+    id: idProp,
     equation: equationModelProp,
     onSuccess,
     onError,
@@ -23,7 +23,6 @@ export default function EquationUpdateForm(props) {
     overrides,
     ...rest
   } = props;
-  console.log("thing update got it: " + {idProp});
   const { tokens } = useTheme();
   const initialValues = {
     equation: "",

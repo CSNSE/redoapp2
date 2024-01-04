@@ -224,7 +224,7 @@ export default function NoteCreateForm(props) {
             });
           }}
           processFile={processFile}
-          accessLevel={"public"}
+          accessLevel={"private"}
           acceptedFileTypes={[]}
           isResumable={false}
           showThumbnails={true}
