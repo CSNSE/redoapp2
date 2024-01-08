@@ -21,5 +21,5 @@ class App extends Component {
     }
 }
 
-//change wee
+//change weee
 export default withAuthenticator(App);
