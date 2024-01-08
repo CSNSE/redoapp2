@@ -4,6 +4,7 @@ type Equation @model @auth(rules: [{allow: public}]) {
   intercepts: String
   domain: String
   range: String
+  image: String
 }
 
 type Note @model @auth(rules: [{allow: public}]) {
@@ -12,4 +13,5 @@ type Note @model @auth(rules: [{allow: public}]) {
   description: String
   image: String
   author: String
-} 
+}
+ 

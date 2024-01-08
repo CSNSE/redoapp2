@@ -27,12 +27,14 @@ export declare type EquationUpdateFormInputValues = {
     intercepts?: string;
     domain?: string;
     range?: string;
+    image?: string;
 };
 export declare type EquationUpdateFormValidationValues = {
     equation?: ValidationFunction<string>;
     intercepts?: ValidationFunction<string>;
     domain?: ValidationFunction<string>;
     range?: ValidationFunction<string>;
+    image?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EquationUpdateFormOverridesProps = {
@@ -41,6 +43,7 @@ export declare type EquationUpdateFormOverridesProps = {
     intercepts?: PrimitiveOverrideProps<TextFieldProps>;
     domain?: PrimitiveOverrideProps<TextFieldProps>;
     range?: PrimitiveOverrideProps<TextFieldProps>;
+    image?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type EquationUpdateFormProps = React.PropsWithChildren<{
     overrides?: EquationUpdateFormOverridesProps | undefined | null;

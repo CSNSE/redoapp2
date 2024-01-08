@@ -26,17 +26,20 @@ export default function EquationCreateForm(props) {
     intercepts: "",
     domain: "",
     range: "",
+    image: "",
   };
   const [equation, setEquation] = React.useState(initialValues.equation);
   const [intercepts, setIntercepts] = React.useState(initialValues.intercepts);
   const [domain, setDomain] = React.useState(initialValues.domain);
   const [range, setRange] = React.useState(initialValues.range);
+  const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setEquation(initialValues.equation);
     setIntercepts(initialValues.intercepts);
     setDomain(initialValues.domain);
     setRange(initialValues.range);
+    setImage(initialValues.image);
     setErrors({});
   };
   const validations = {
@@ -44,6 +47,7 @@ export default function EquationCreateForm(props) {
     intercepts: [],
     domain: [],
     range: [],
+    image: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -75,6 +79,7 @@ export default function EquationCreateForm(props) {
           intercepts,
           domain,
           range,
+          image,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -133,6 +138,7 @@ export default function EquationCreateForm(props) {
               intercepts,
               domain,
               range,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.equation ?? value;
@@ -160,6 +166,7 @@ export default function EquationCreateForm(props) {
               intercepts: value,
               domain,
               range,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.intercepts ?? value;
@@ -187,6 +194,7 @@ export default function EquationCreateForm(props) {
               intercepts,
               domain: value,
               range,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.domain ?? value;
@@ -214,6 +222,7 @@ export default function EquationCreateForm(props) {
               intercepts,
               domain,
               range: value,
+              image,
             };
             const result = onChange(modelFields);
             value = result?.range ?? value;
@@ -227,6 +236,34 @@ export default function EquationCreateForm(props) {
         errorMessage={errors.range?.errorMessage}
         hasError={errors.range?.hasError}
         {...getOverrideProps(overrides, "range")}
+      ></TextField>
+      <TextField
+        label="Image"
+        isRequired={false}
+        isReadOnly={false}
+        value={image}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              equation,
+              intercepts,
+              domain,
+              range,
+              image: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.image ?? value;
+          }
+          if (errors.image?.hasError) {
+            runValidationTasks("image", value);
+          }
+          setImage(value);
+        }}
+        onBlur={() => runValidationTasks("image", image)}
+        errorMessage={errors.image?.errorMessage}
+        hasError={errors.image?.hasError}
+        {...getOverrideProps(overrides, "image")}
       ></TextField>
       <Flex
         justifyContent="space-between"
