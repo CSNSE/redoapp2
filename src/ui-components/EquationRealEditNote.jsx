@@ -15,7 +15,7 @@ import {
 import { schema } from "../models/schema";
 import { useEffect } from "react";
 import MyIcon from "./MyIcon";
-import { Button, Grid, Flex, Text, TextField, View, useTheme } from "@aws-amplify/ui-react";
+import { Button, Grid, Flex, Text, TextField, View, useTheme, Image, Icon, Dvider } from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify/datastore";
@@ -32,18 +32,19 @@ export default function EquationRealEditNote(props) {
     overrides,
     ...rest
   } = props;
-  console.log("thing update got it: " + {idProp});
   const { tokens } = useTheme();
   const initialValues = {
     equation: "",
     intercepts: "",
     domain: "",
     range: "",
+    image: "",
   };
   const [equation, setEquation] = React.useState(initialValues.equation);
   const [intercepts, setIntercepts] = React.useState(initialValues.intercepts);
   const [domain, setDomain] = React.useState(initialValues.domain);
   const [range, setRange] = React.useState(initialValues.range);
+  const [image, setImage] = React.useState(initialValues.image);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = equationRecord
@@ -53,6 +54,7 @@ export default function EquationRealEditNote(props) {
     setIntercepts(cleanValues.intercepts);
     setDomain(cleanValues.domain);
     setRange(cleanValues.range);
+    setImage(cleanValues.image);
     setErrors({});
   };
   const [equationRecord, setEquationRecord] = React.useState(equationModelProp);
@@ -71,6 +73,7 @@ export default function EquationRealEditNote(props) {
     intercepts: [],
     domain: [],
     range: [],
+    image: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -102,6 +105,7 @@ export default function EquationRealEditNote(props) {
           intercepts,
           domain,
           range,
+          image,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {

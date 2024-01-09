@@ -51,16 +51,16 @@ export default function EquationImageNoteCardCollection(props) {
       newCache.push(...result.items);
       newNext = result.nextToken;
       /* MAH lines 66-78 be sure to update variable names to match your model! */
-      const recipesFromAPI = result.items
-        Promise.all(
-        recipesFromAPI.map(async (recipe) => {
-          if (recipe.image) {
+      const equationsFromAPI = result.items
+        await Promise.all(
+        equationsFromAPI.map(async (equation) => {
+          if (equation.image) {
             const getUrlResult = await getUrl({
-              key: recipe.image,
+              key: equation.image,
             });
-            recipe.image=getUrlResult.url;
+            equation.image=getUrlResult.url;
           }
-          return recipe;
+          return equation;
           })
         );
     }

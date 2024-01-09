@@ -10,9 +10,9 @@ import { Button, Flex, Grid, TextField, useTheme } from "@aws-amplify/ui-react";
 import { Equation } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify/datastore";
-export default function EquationUpdateForm(props) {
+export default function EquationRealEditNote(props) {
   const {
-    id: idProp,
+    idProp,
     equation: equationModelProp,
     onSuccess,
     onError,
