@@ -37,15 +37,17 @@ export default function EquationCreateNote(props) {
     textFieldFourTwoSixOneNineEightTwoValue,
     setTextFieldFourTwoSixOneNineEightTwoValue,
   ] = useStateMutationAction("");
+  
+  const [
+    imageName,
+    setImageName,
+  ] = useState("");
   const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
   const frameFourThreeEightThreeOnMouseUp = useNavigateAction({
     type: "url",
     url: "/",
   });
-  const [
-    imageName,
-    setImageName,
-  ] = useState("");
+
   const frameFourThreeEightThreeOnMouseDown = useDataStoreCreateAction({
     fields: {
       equation: textFieldFourTwoSixOneNineSevenNineValue,

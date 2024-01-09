@@ -17,7 +17,10 @@ import { useEffect } from "react";
 import MyIcon from "./MyIcon";
 import { Button, Grid, Flex, Text, TextField, View, useTheme, Image, Icon, Dvider } from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
-import { fetchByPath, getOverrideProps, validateField } from "./utils";
+import { fetchByPath, getOverrideProps, validateField, processFile } from "./utils";
+import { generateClient } from "aws-amplify/api";
+import { Field } from "@aws-amplify/ui-react/internal";  //MAH add!
+import { StorageManager } from "@aws-amplify/ui-react-storage"; //MAH add!
 import { DataStore } from "aws-amplify/datastore";
 export default function EquationRealEditNote(props) {
   const {
@@ -401,6 +404,27 @@ export default function EquationRealEditNote(props) {
         hasError={errors.range?.hasError}
         {...getOverrideProps(overrides, "range")}
           ></TextField>
+          <Field
+
+label={"Image"}
+isRequired={false}
+isReadOnly={false}
+>
+<StorageManager
+onUploadSuccess={({ key }) => {
+  setImage(
+    key
+  );
+}}
+processFile={processFile}
+accessLevel={"public"}
+acceptedFileTypes={[]}
+isResumable={false}
+showThumbnails={true}
+maxFileCount={1}
+{...getOverrideProps(overrides, "image")}
+></StorageManager>
+</Field>
         </Flex>
         <View
           width="71px"
