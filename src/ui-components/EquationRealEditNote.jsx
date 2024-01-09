@@ -93,7 +93,7 @@ export default function EquationRealEditNote(props) {
     return validationResponse;
   };
   return (
-    <Grid
+<Grid
       as="form"
       rowGap={tokens.space.xs.value}
       columnGap="15px"
@@ -156,7 +156,7 @@ export default function EquationRealEditNote(props) {
       gap="16px"
       direction="column"
       width="320px"
-      height="616px"
+      height="698px"
       justifyContent="flex-start"
       alignItems="flex-start"
       position="relative"
@@ -169,7 +169,7 @@ export default function EquationRealEditNote(props) {
         gap="24px"
         direction="column"
         width="unset"
-        height="616px"
+        height="698px"
         justifyContent="flex-start"
         alignItems="flex-start"
         shrink="0"
@@ -248,7 +248,7 @@ export default function EquationRealEditNote(props) {
           gap="16px"
           direction="column"
           width="unset"
-          height="unset"
+          height="550px"
           justifyContent="flex-start"
           alignItems="flex-start"
           shrink="0"
@@ -271,7 +271,7 @@ export default function EquationRealEditNote(props) {
             isRequired={false}
         isReadOnly={false}
         value={equation}
-        onChange={(e) => {
+            onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
@@ -287,8 +287,8 @@ export default function EquationRealEditNote(props) {
             runValidationTasks("equation", value);
           }
           setEquation(value);
-        }}
-        onBlur={() => runValidationTasks("equation", equation)}
+            }}
+            onBlur={() => runValidationTasks("equation", equation)}
         errorMessage={errors.equation?.errorMessage}
         hasError={errors.equation?.hasError}
         {...getOverrideProps(overrides, "equation")}
@@ -323,8 +323,8 @@ export default function EquationRealEditNote(props) {
             runValidationTasks("intercepts", value);
           }
           setIntercepts(value);
-        }}
-        onBlur={() => runValidationTasks("intercepts", intercepts)}
+            }}
+            onBlur={() => runValidationTasks("intercepts", intercepts)}
         errorMessage={errors.intercepts?.errorMessage}
         hasError={errors.intercepts?.hasError}
         {...getOverrideProps(overrides, "intercepts")}
@@ -343,7 +343,7 @@ export default function EquationRealEditNote(props) {
             isRequired={false}
         isReadOnly={false}
         value={domain}
-        onChange={(e) => {
+            onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
@@ -359,8 +359,8 @@ export default function EquationRealEditNote(props) {
             runValidationTasks("domain", value);
           }
           setDomain(value);
-        }}
-        onBlur={() => runValidationTasks("domain", domain)}
+            }}
+            onBlur={() => runValidationTasks("domain", domain)}
         errorMessage={errors.domain?.errorMessage}
         hasError={errors.domain?.hasError}
         {...getOverrideProps(overrides, "domain")}
@@ -379,7 +379,7 @@ export default function EquationRealEditNote(props) {
             isRequired={false}
         isReadOnly={false}
         value={range}
-        onChange={(e) => {
+            onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
@@ -430,6 +430,6 @@ export default function EquationRealEditNote(props) {
         </View>
       </Flex>
     </Flex>
-    </Grid>
+</Grid>
   );
 }

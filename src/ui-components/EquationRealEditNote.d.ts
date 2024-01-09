@@ -32,6 +32,7 @@ export declare type EquationRealEditNoteOverridesProps = {
     TextField4061928?: PrimitiveOverrideProps<TextFieldProps>;
     TextField4061929?: PrimitiveOverrideProps<TextFieldProps>;
     TextField4061930?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField42771082?: PrimitiveOverrideProps<TextFieldProps>;
     "Frame 4383"?: PrimitiveOverrideProps<ViewProps>;
     "Save/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
