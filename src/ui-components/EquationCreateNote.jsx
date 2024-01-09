@@ -7,14 +7,15 @@
 /* eslint-disable */
 import * as React from "react";
 import { Equation } from "../models";
+import { getOverrideProps, useNavigateAction, processFile } from "./utils";
 import {
-  getOverrideProps,
   useDataStoreCreateAction,
-  useNavigateAction,
   useStateMutationAction,
 } from "./utils";
 import { schema } from "../models/schema";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Field } from "@aws-amplify/ui-react/internal";
+import { StorageManager } from "@aws-amplify/ui-react-storage";
 import MyIcon from "./MyIcon";
 import { Flex, Text, TextField, View } from "@aws-amplify/ui-react";
 import Buttondefaultfalseprimary from "./Buttondefaultfalseprimary";
@@ -41,12 +42,17 @@ export default function EquationCreateNote(props) {
     type: "url",
     url: "/",
   });
+  const [
+    imageName,
+    setImageName,
+  ] = useState("");
   const frameFourThreeEightThreeOnMouseDown = useDataStoreCreateAction({
     fields: {
       equation: textFieldFourTwoSixOneNineSevenNineValue,
       intercepts: textFieldFourTwoSixOneNineEightZeroValue,
       domain: textFieldFourTwoSixOneNineEightOneValue,
       range: textFieldFourTwoSixOneNineEightTwoValue,
+      image: imageName,
     },
     model: Equation,
     schema: schema,
@@ -88,7 +94,7 @@ export default function EquationCreateNote(props) {
       gap="16px"
       direction="column"
       width="320px"
-      height="616px"
+      height="698px"
       justifyContent="flex-start"
       alignItems="flex-start"
       position="relative"
@@ -101,7 +107,7 @@ export default function EquationCreateNote(props) {
         gap="24px"
         direction="column"
         width="unset"
-        height="616px"
+        height="698px"
         justifyContent="flex-start"
         alignItems="flex-start"
         shrink="0"
@@ -180,7 +186,7 @@ export default function EquationCreateNote(props) {
           gap="16px"
           direction="column"
           width="unset"
-          height="unset"
+          height="550px"
           justifyContent="flex-start"
           alignItems="flex-start"
           shrink="0"
@@ -257,6 +263,27 @@ export default function EquationCreateNote(props) {
             }}
             {...getOverrideProps(overrides, "TextField4261982")}
           ></TextField>
+           <Field
+
+        label={"Image"}
+        isRequired={false}
+        isReadOnly={false}
+      >
+        <StorageManager
+          onUploadSuccess={({ key }) => {
+            setImageName(
+              key
+            );
+          }}
+          processFile={processFile}
+          accessLevel={"public"}
+          acceptedFileTypes={[]}
+          isResumable={false}
+          showThumbnails={true}
+          maxFileCount={1}
+          {...getOverrideProps(overrides, "image")}
+        ></StorageManager>
+      </Field>
         </Flex>
         <View
           width="71px"

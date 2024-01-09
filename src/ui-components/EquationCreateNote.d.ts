@@ -32,6 +32,7 @@ export declare type EquationCreateNoteOverridesProps = {
     TextField4261980?: PrimitiveOverrideProps<TextFieldProps>;
     TextField4261981?: PrimitiveOverrideProps<TextFieldProps>;
     TextField4261982?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField42771075?: PrimitiveOverrideProps<TextFieldProps>;
     "Frame 4383"?: PrimitiveOverrideProps<ViewProps>;
     "Create/default/false/primary"?: ButtondefaultfalseprimaryProps;
 } & EscapeHatchProps;
