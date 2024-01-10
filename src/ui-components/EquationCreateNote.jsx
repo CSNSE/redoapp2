@@ -91,6 +91,7 @@ export default function EquationCreateNote(props) {
     )
       setTextFieldFourTwoSixOneNineEightTwoValue(equation?.range);
   }, [equation]);
+  
   return (
     <Flex
       gap="16px"
