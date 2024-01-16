@@ -15,11 +15,13 @@ import {
 import { schema } from "../models/schema";
 import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
+
 export default function EquationImageNoteCard(props) {
   const { equation, overrides, ...rest } = props;
+  console.log("export image: " + equation?.image);
   const frameFourFourZeroOnClick = useNavigateAction({
     type: "url",
-    url: `${"/update/"}${equation?.id}`,
+    url: "/update/",
   });
   const frameFourThreeEightOnMouseUp = useNavigateAction({
     type: "url",
