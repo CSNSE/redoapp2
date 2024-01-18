@@ -32,6 +32,7 @@ export default function EquationImageNoteCard(props) {
     model: Equation,
     schema: schema,
   });
+  console.log("https://redoapp2-storage-cf1f1f5004012-staging.s3.amazonaws.com/public/" + equation?.image);
   return (
     <Flex
       gap="0"
@@ -128,6 +129,7 @@ export default function EquationImageNoteCard(props) {
                 }}
                 {...getOverrideProps(overrides, "Frame 440")}
               >
+                
                 <MyIcon
                   width="24px"
                   height="24px"
@@ -145,6 +147,7 @@ export default function EquationImageNoteCard(props) {
                 ></MyIcon>
               </View>
               <View
+
                 width="24px"
                 height="24px"
                 display="block"

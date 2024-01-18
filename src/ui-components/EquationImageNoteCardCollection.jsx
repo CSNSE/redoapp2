@@ -25,6 +25,7 @@ export default function EquationImageNoteCardCollection(props) {
       return;
     }
     setItems(itemsDataStore);
+    
     //
     
         // itemsDataStore.map(async (equation) => {
@@ -38,6 +39,7 @@ export default function EquationImageNoteCardCollection(props) {
         //   return equation;
         // })
     //---------------------
+    
     itemsDataStore.map(async (equation) => {
       if (equation.image) {
         const getUrlResult = await getUrl({
@@ -49,7 +51,7 @@ export default function EquationImageNoteCardCollection(props) {
       console.log(equation);
       return equation;
       })
-      //--------------
+      //----------------
       
       //-------------
     }, [itemsProp, itemsDataStore]);
