@@ -46,7 +46,7 @@ export default function EquationImageNoteCardCollection(props) {
           key: equation.image,
         });
         console.log(equation.image);
-        //equation.image=getUrlResult.url;
+        //equation.image=getUrlResult.url;        //LOOOK AATTT THISSS
       }
       console.log(equation);
       return equation;
