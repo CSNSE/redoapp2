@@ -21,11 +21,11 @@ export default function EquationImageNoteCard(props) {
   console.log("export image: " + equation?.image);
   const frameFourFourZeroOnClick = useNavigateAction({
     type: "url",
-    url: "/update/",
+    url: `${"/update/"}${equation?.id}`,
   });
   const frameFourThreeEightOnMouseUp = useNavigateAction({
     type: "url",
-    url: "/",
+    url: "/History",
   });
   const frameFourThreeEightOnClick = useDataStoreDeleteAction({
     id: equation?.id,
