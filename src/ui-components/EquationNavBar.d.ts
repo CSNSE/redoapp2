@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { LogoWithTextProps } from "./LogoWithText";
-import { ButtonProps, FlexProps } from "@aws-amplify/ui-react";
+import { ButtonProps, FlexProps, ViewProps } from "@aws-amplify/ui-react";
 import { MyIconProps } from "./MyIcon";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
@@ -21,6 +21,7 @@ export declare type Variant = {
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EquationNavBarOverridesProps = {
     EquationNavBar?: PrimitiveOverrideProps<FlexProps>;
+    "Frame 4397"?: PrimitiveOverrideProps<ViewProps>;
     LogoWithText?: LogoWithTextProps;
     "Frame 3214091841"?: PrimitiveOverrideProps<FlexProps>;
     MyIcon?: MyIconProps;
