@@ -205,6 +205,7 @@ export default function EquationImageNoteCard(props) {
             children={equation?.equation}
             {...getOverrideProps(overrides, "Equation")}
           ></Text>
+          
           <Text
             fontFamily="Inter"
             fontSize="16px"
@@ -251,6 +252,12 @@ export default function EquationImageNoteCard(props) {
             children={equation?.domain}
             {...getOverrideProps(overrides, "Domain")}
           ></Text>
+          {/* <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6">
+            <div id="calculator" style="width: 600px; height: 400px;"><script>
+  var elt = document.getElementById('calculator');
+  var calculator = Desmos.GraphingCalculator(elt);
+</script></div></script> */}
+          
           <Text
             fontFamily="Inter"
             fontSize="16px"
