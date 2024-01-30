@@ -6,10 +6,12 @@ import {EquationNoteCardCollection, EquationNavBar, EquationImageNoteCardCollect
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import NewNote from './NewNote'
 import EditNote from './EditNote';
+import DesmosCalculator from './DesmosCalculator';
 
 class App extends Component {
     render() {
     return (
+        
         <div className="App"><header className="App-header">
             <Routes>
                 <Route exact path="/" element={<div><EquationNavBar/><EquationHomePage2/></div>} />
