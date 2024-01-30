@@ -12,7 +12,7 @@ class App extends Component {
     return (
         <div className="App"><header className="App-header">
             <Routes>
-                <Route exact path="/" element={<div><EquationNavBar/></div>} />
+                <Route exact path="/" element={<div><EquationNavBar/><EquationHomePage2/></div>} />
                 <Route exact path='/History' element={<div><EquationNavBar/><EquationImageNoteCardCollection isPaginated itemsPerPage={3} /></div>}/>
                 <Route exact path='/NewNote' element={<NewNote/>}/>
                 <Route exact path='/update/:cid' element={<EditNote/>}/>
