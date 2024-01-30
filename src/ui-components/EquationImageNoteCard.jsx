@@ -32,7 +32,10 @@ export default function EquationImageNoteCard(props) {
     model: Equation,
     schema: schema,
   });
-  console.log("https://redoapp2-storage-cf1f1f5004012-staging.s3.amazonaws.com/public/" + equation?.image);
+  const frameFourThreeNineEightOnClick = useNavigateAction({
+    type: "url",
+    url: "/Desmos.html",
+  });
   return (
     <Flex
       gap="0"
@@ -179,6 +182,37 @@ export default function EquationImageNoteCard(props) {
                   padding="0px 0px 0px 0px"
                   type="delete"
                   {...getOverrideProps(overrides, "MyIcon42761067")}
+                ></MyIcon>
+              </View>
+              <View
+                width="24px"
+                height="24px"
+                display="block"
+                gap="unset"
+                alignItems="unset"
+                justifyContent="unset"
+                shrink="0"
+                position="relative"
+                padding="0px 0px 0px 0px"
+                onClick={() => {
+                  frameFourThreeNineEightOnClick();
+                }}
+                {...getOverrideProps(overrides, "Frame 4398")}
+              >
+                <MyIcon
+                  width="24px"
+                  height="24px"
+                  display="block"
+                  gap="unset"
+                  alignItems="unset"
+                  justifyContent="unset"
+                  overflow="hidden"
+                  position="absolute"
+                  top="0px"
+                  left="0px"
+                  padding="0px 0px 0px 0px"
+                  type="content"
+                  {...getOverrideProps(overrides, "MyIcon42981042")}
                 ></MyIcon>
               </View>
             </Flex>

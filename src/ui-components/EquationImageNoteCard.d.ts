@@ -30,6 +30,8 @@ export declare type EquationImageNoteCardOverridesProps = {
     MyIcon42761065?: MyIconProps;
     "Frame 438"?: PrimitiveOverrideProps<ViewProps>;
     MyIcon42761067?: MyIconProps;
+    "Frame 4398"?: PrimitiveOverrideProps<ViewProps>;
+    MyIcon42981042?: MyIconProps;
     Equation?: PrimitiveOverrideProps<TextProps>;
     Intercepts?: PrimitiveOverrideProps<TextProps>;
     Domain?: PrimitiveOverrideProps<TextProps>;

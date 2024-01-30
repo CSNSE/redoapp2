@@ -11,12 +11,14 @@
 <body>
 
     <!-- Step 2: Add HTML element as a container -->
-    <div id="calculator" style="width: 600px; height: 400px;"></div>
+    <div id="calculator" style="width: flex; height: 600px;"></div>
 
     <!-- Step 3: Initialize Desmos calculator with JavaScript -->
     <script>
+
         var elt = document.getElementById('calculator');
         var calculator = Desmos.GraphingCalculator(elt);
+        calculator.setExpression({ id: 'line1', latex: 'y=' + equation.name, color: '#ff0000' });
     </script>
 
     <!-- Additional content of your web page -->

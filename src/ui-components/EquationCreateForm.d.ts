@@ -6,6 +6,7 @@
 
 import * as React from "react";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { StorageManagerProps } from "@aws-amplify/ui-react-storage";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -42,7 +43,7 @@ export declare type EquationCreateFormOverridesProps = {
     intercepts?: PrimitiveOverrideProps<TextFieldProps>;
     domain?: PrimitiveOverrideProps<TextFieldProps>;
     range?: PrimitiveOverrideProps<TextFieldProps>;
-    image?: PrimitiveOverrideProps<TextFieldProps>;
+    image?: PrimitiveOverrideProps<StorageManagerProps>;
 } & EscapeHatchProps;
 export declare type EquationCreateFormProps = React.PropsWithChildren<{
     overrides?: EquationCreateFormOverridesProps | undefined | null;
