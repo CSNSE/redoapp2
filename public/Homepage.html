@@ -1,28 +1,124 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="HomePage.css">
     <title>Calculator Homepage</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('AIBack.jpg');
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Set the minimum height of the body to 100% of the viewport height */
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #d8d8d8;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(57, 57, 57);
+        }
+
+        main {
+            padding: 20px;
+            color: white; /* Set text color for descriptions to white */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1; /* Grow to fill available space */
+        }
+
+        section.calculator-section {
+            /* Add styles for your calculator section */
+        }
+
+        .descriptions-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .description {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        footer {
+            background-color: rgba(65, 65, 65, 0.8);
+            padding: 10px;
+            text-align: center;
+            color: white; /* Set text color for the footer to white */
+            position: sticky;
+            bottom: 0;
+        }
+
+        .settings-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Calculator Website</h1>
+        <h1>Clement's Calculator Website</h1>
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/History">History</a></li>
             </ul>
         </nav>
+        <button class="settings-button">Settings</button>
     </header>
     <main>
         <section class="calculator-section">
             <!-- Add your calculator content here -->
         </section>
+            <div class="description", style="margin-right: 1200px;">
+                <h2>Integrated</h2>
+                <p>Shows a graph and the solutions to the polynomial</p>
+            </div>
+            <div class="description", style="margin-right: 1350px;">
+                <h2>Reliable</h2>
+                <p>It can factor any polynomial</p>
+            </div>
+        <div class="description", style="margin-right: 1200px;">
+            <h2>Responsive Design</h2>
+            <p>Many options including roots and exponentiation</p>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2024 Calculator Website</p>
+        <button style="float: left; margin-left: 10px;">Learn More</button>
+        <button style="position: absolute; bottom: 10px; right: 10px;">Contact Us</button>
+        <p>&copy; 2024 Calculator Website, Created with the Desmos API, used with permission from Desmos Studio PBC.</p>
     </footer>
 </body>
 </html>
