@@ -36,6 +36,30 @@ export default function EquationImageNoteCard(props) {
     type: "url",
     url: "/Desmos.html",
   });
+  // const DesmosComponent = () => {
+  //   useEffect(() => {
+  //     // Step 2: Add HTML element as a container
+  //     const elt = document.getElementById('calculator');
+  //     // Step 3: Initialize Desmos calculator with JavaScript
+  //     const calculator = Desmos.GraphingCalculator(elt);
+  //     calculator.setExpression({ id: 'line1', latex: 'y=x', color: '#ff0000' });
+  //   }, []); // Empty dependency array ensures useEffect runs only once after the initial render
+  
+  //   return (
+  //     <div>
+  //       <nav>
+  //         <ul>
+  //           <li><a href="/History">History</a></li>
+  //         </ul>
+  //       </nav>
+  
+  //       <div id="calculator" style={{ width: '100%', height: '600px' }}></div>
+  
+  //       {/* Additional content of your web page */}
+  //     </div>
+  //   );
+  // };
+  
   return (
     <Flex
       gap="0"
@@ -50,6 +74,34 @@ export default function EquationImageNoteCard(props) {
       {...getOverrideProps(overrides, "EquationImageNoteCard")}
       {...rest}
     >
+      {/*
+      <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desmos Calc</title>
+
+    <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/History">History</a></li>
+        </ul>
+    </nav>
+    <div id="calculator" style="width: flex; height: 600px;"></div>
+
+
+    <script>
+
+        var elt = document.getElementById('calculator');
+        var calculator = Desmos.GraphingCalculator(elt);
+        calculator.setExpression({ id: 'line1', latex: 'y=' + equation.name, color: '#ff0000' });
+    </script>
+
+
+  </body>
+  */}
       <Image
         width="unset"
         height="408px"

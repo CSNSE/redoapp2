@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>Desmos Calc</title>
 
     <!-- Step 1: Include Desmos API script -->
     <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
@@ -11,7 +12,7 @@
 <body>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="/History">History</a></li>
         </ul>
     </nav>
 
@@ -23,7 +24,7 @@
 
         var elt = document.getElementById('calculator');
         var calculator = Desmos.GraphingCalculator(elt);
-        calculator.setExpression({ id: 'line1', latex: 'y=' + equation.name, color: '#ff0000' });
+        calculator.setExpression({ id: 'line1', latex: 'y=x', color: '#ff0000' });
     </script>
 
     <!-- Additional content of your web page -->

@@ -82,6 +82,7 @@ export default function EquationImageNoteCardCollection(props) {
           {...(overrideItems && overrideItems({ item, index }))}
           
         >
+          
           {/* <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6">
             <div id="calculator" style="width: 600px; height: 400px;"><script>
   var elt = document.getElementById('calculator');

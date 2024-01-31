@@ -11,7 +11,7 @@ import DesmosCalculator from './DesmosCalculator';
 class App extends Component {
     render() {
     return (
-        
+
         <div className="App"><header className="App-header">
             <Routes>
                 <Route exact path="/" element={<div><EquationNavBar/><EquationHomePage2/></div>} />
