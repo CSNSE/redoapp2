@@ -437,7 +437,9 @@ maxFileCount={1}
           position="relative"
           padding="0px 0px 0px 0px"
           onClick={() => {
-            //frameFourThreeEightThreeOnClick();
+          }}
+          onMouseUp={() => {
+            frameFourThreeEightThreeOnMouseUp();
           }}
           {...getOverrideProps(overrides, "Frame 4383")}
         >
