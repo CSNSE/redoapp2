@@ -20,11 +20,25 @@
     <div id="calculator" style="width: flex; height: 600px;"></div>
 
     <!-- Step 3: Initialize Desmos calculator with JavaScript -->
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script type="module">
+        // Import the JSX component
+        import MyComponent from './public';
+    
+        // Render the component to the root element
+        ReactDOM.render(
+          React.createElement(MyComponent),
+          document.getElementById('root')
+        );
+    </script>
+    
     <script>
 
         var elt = document.getElementById('calculator');
         var calculator = Desmos.GraphingCalculator(elt);
-        calculator.setExpression({ id: 'line1', latex: 'y=x', color: '#ff0000' });
+        calculator.setExpression({ id: 'line1', latex: 'y=x^2', color: '#ff0000' });
     </script>
 
     <!-- Additional content of your web page -->
