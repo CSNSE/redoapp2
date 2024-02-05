@@ -14,7 +14,7 @@ export default function EquationHomePage2(props) {
   const { overrides, ...rest } = props;
   const frameFourThreeEightThreeOnClick = useNavigateAction({
     type: "url",
-    url: "/History",
+    url: "/HomePage.html",
   });
   return (
     <Flex

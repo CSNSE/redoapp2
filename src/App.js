@@ -9,6 +9,7 @@ import EditNote from './EditNote';
 import DesmosCalculator from './DesmosCalculator';
 
 class App extends Component {
+    
     render() {
     return (
 
