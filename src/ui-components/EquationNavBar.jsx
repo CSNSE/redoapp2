@@ -14,7 +14,7 @@ export default function EquationNavBar(props) {
   const { overrides, ...rest } = props;
   const frameFourThreeNineSevenOnClick = useNavigateAction({
     type: "url",
-    url: "/",
+    url: "/HomePage.html",
   });
   const frameThreeTwoOneFourZeroNineOneEightFourThreeOnClick =
     useNavigateAction({ type: "url", url: "/NewNote" });

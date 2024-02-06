@@ -36,7 +36,15 @@ export default function EquationImageNoteCard(props) {
     type: "url",
     url: "/Desmos.html",
   });
-  // const DesmosComponent = () => {
+  //
+  //////////////////////// Use useEffect to initialize Desmos calculator and set expression
+    // React.useEffect(() => {
+    //   const elt = document.getElementById('calculator');
+    //   const calculator = Desmos.GraphingCalculator(elt);
+    //   calculator.setExpression({ id: 'line1', latex: 'y=' + equation?.name, color: '#ff0000' });
+    // }, [equation?.name]); // Trigger effect when equation name changes
+  
+  ////////////// const DesmosComponent = () => {
   //   useEffect(() => {
   //     // Step 2: Add HTML element as a container
   //     const elt = document.getElementById('calculator');
