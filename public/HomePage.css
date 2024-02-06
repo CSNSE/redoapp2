@@ -40,3 +40,11 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.description {
+    flex: 1;
+    margin: 0 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+    padding: 20px;
+    border-radius: 10px; /* Optional: adds rounded corners */
+}
+
