@@ -53,7 +53,8 @@ const desmosContainerRef = useRef(null);
       calculator.destroy();
     };
   }, [equation]);
-
+// This Change from another ISSUE also fixes this ISSUE 
+//so the commit should have also went to this one but i have to make another save and commit
 //
 
 
@@ -75,21 +76,7 @@ const desmosContainerRef = useRef(null);
     >
       <div ref={desmosContainerRef} style={{ width: '600px', height: '400px' }}></div>
       
-      <Image
-        width="unset"
-        height="408px"
-        display="block"
-        gap="unset"
-        alignItems="unset"
-        justifyContent="unset"
-        shrink="0"
-        alignSelf="stretch"
-        position="relative"
-        padding="0px 0px 0px 0px"
-        objectFit="cover"
-        src={equation?.image}
-        {...getOverrideProps(overrides, "image")}
-      ></Image>
+  
       <Flex
         gap="16px"
         direction="column"
