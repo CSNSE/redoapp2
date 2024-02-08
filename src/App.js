@@ -36,7 +36,7 @@ class App extends Component {
                 <header className="App-header">
                     <Routes>
                         <Route path="/" element={<HomePage />} />
-                        <Route exact path='/History' element={<div><EquationNavBar/><EquationImageNoteCardCollection isPaginated itemsPerPage={3} /></div>} />
+                        <Route exact path='/History' element={<div><EquationNavBar/><EquationImageNoteCardCollection isPaginated itemsPerPage={2} /></div>} />
                         <Route exact path='/NewNote' element={<NewNote/>}/>
                         <Route exact path='/update/:cid' element={<EditNote/>}/>
                     </Routes>
