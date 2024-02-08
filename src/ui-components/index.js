@@ -13,6 +13,8 @@ export { default as ContactUs } from "./ContactUs";
 export { default as DataRow } from "./DataRow";
 export { default as EquationCreateForm } from "./EquationCreateForm";
 export { default as EquationCreateNote } from "./EquationCreateNote";
+export { default as EquationHomePage } from "./EquationHomePage";
+export { default as EquationHomePage2 } from "./EquationHomePage2";
 export { default as EquationImageNoteCard } from "./EquationImageNoteCard";
 export { default as EquationImageNoteCardCollection } from "./EquationImageNoteCardCollection";
 export { default as EquationNavBar } from "./EquationNavBar";

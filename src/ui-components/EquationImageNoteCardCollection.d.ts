@@ -7,7 +7,6 @@
 import * as React from "react";
 import { EquationImageNoteCardProps } from "./EquationImageNoteCard";
 import { CollectionProps } from "@aws-amplify/ui-react";
-
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;

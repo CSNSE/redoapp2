@@ -60,6 +60,14 @@ export default function EquationRealEditNote(props) {
     setImage(cleanValues.image);
     setErrors({});
   };
+  // const frameFourFourFourOnClick = useNavigateAction({
+  //   type: "url",
+  //   url: "/History",
+  // });
+  const frameFourThreeEightThreeOnMouseUp = useNavigateAction({
+    type: "url",
+    url: "/History",
+  });
   const [equationRecord, setEquationRecord] = React.useState(equationModelProp);
   React.useEffect(() => {
     const queryData = async () => {
@@ -437,7 +445,9 @@ maxFileCount={1}
           position="relative"
           padding="0px 0px 0px 0px"
           onClick={() => {
-            //frameFourThreeEightThreeOnClick();
+          }}
+          onMouseUp={() => {
+            frameFourThreeEightThreeOnMouseUp();
           }}
           {...getOverrideProps(overrides, "Frame 4383")}
         >

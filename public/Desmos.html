@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desmos Calc</title>
+
+    <!-- Step 1: Include Desmos API script -->
+    <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/History">History</a></li>
+        </ul>
+    </nav>
+
+    <!-- Step 2: Add HTML element as a container -->
+    <div id="calculator" style="width: flex; height: 600px;"></div>
+
+    <!-- Step 3: Initialize Desmos calculator with JavaScript -->
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script type="module">
+        // Import the JSX component
+        import MyComponent from './public';
+    
+        // Render the component to the root element
+        ReactDOM.render(
+          React.createElement(MyComponent),
+          document.getElementById('root')
+        );
+    </script>
+    
+    <script>
+        var elt = document.getElementById('calculator');
+        var calculator = Desmos.GraphingCalculator(elt);
+        calculator.setExpression({ id: 'line1', latex: 'y=x^2', color: '#ff0000' });
+    </script>
+
+    <!-- Additional content of your web page -->
+
+</body>
+</html>

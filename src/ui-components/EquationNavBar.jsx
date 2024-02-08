@@ -8,10 +8,14 @@
 import * as React from "react";
 import { getOverrideProps, useNavigateAction } from "./utils";
 import LogoWithText from "./LogoWithText";
-import { Button, Flex } from "@aws-amplify/ui-react";
+import { Button, Flex, View } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function EquationNavBar(props) {
   const { overrides, ...rest } = props;
+  const frameFourThreeNineSevenOnClick = useNavigateAction({
+    type: "url",
+    url: "/HomePage.html",
+  });
   const frameThreeTwoOneFourZeroNineOneEightFourThreeOnClick =
     useNavigateAction({ type: "url", url: "/NewNote" });
   const buttonOnClick = useNavigateAction({ type: "url", url: "/NewNote" });
@@ -30,7 +34,7 @@ export default function EquationNavBar(props) {
       {...getOverrideProps(overrides, "EquationNavBar")}
       {...rest}
     >
-      <LogoWithText
+      <View
         width="127.88px"
         height="18.91px"
         display="block"
@@ -40,9 +44,26 @@ export default function EquationNavBar(props) {
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        color="brand"
-        {...getOverrideProps(overrides, "LogoWithText")}
-      ></LogoWithText>
+        onClick={() => {
+          frameFourThreeNineSevenOnClick();
+        }}
+        {...getOverrideProps(overrides, "Frame 4397")}
+      >
+        <LogoWithText
+          width="127.88px"
+          height="18.91px"
+          display="block"
+          gap="unset"
+          alignItems="unset"
+          justifyContent="unset"
+          position="absolute"
+          top="0px"
+          left="0px"
+          padding="0px 0px 0px 0px"
+          color="brand"
+          {...getOverrideProps(overrides, "LogoWithText")}
+        ></LogoWithText>
+      </View>
       <Flex
         gap="40px"
         direction="row"

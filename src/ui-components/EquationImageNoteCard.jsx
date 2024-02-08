@@ -5,7 +5,8 @@
  **************************************************************************/
 
 /* eslint-disable */
-import * as React from "react";
+//import * as React from "react";
+import React, { useRef, useEffect } from "react"; 
 import { Equation } from "../models";
 import {
   getOverrideProps,
@@ -15,30 +16,56 @@ import {
 import { schema } from "../models/schema";
 import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
+import Desmos from 'desmos'
 
 export default function EquationImageNoteCard(props) {
   const { equation, overrides, ...rest } = props;
   console.log("export image: " + equation?.image);
+  
   const frameFourFourZeroOnClick = useNavigateAction({
     type: "url",
-    url: "/update/",
+    url: `${"/update/"}${equation?.id}`,
   });
   const frameFourThreeEightOnMouseUp = useNavigateAction({
     type: "url",
-    url: "/",
+    url: "/History",
   });
   const frameFourThreeEightOnClick = useDataStoreDeleteAction({
     id: equation?.id,
     model: Equation,
     schema: schema,
   });
-  console.log("https://redoapp2-storage-cf1f1f5004012-staging.s3.amazonaws.com/public/" + equation?.image);
+  const frameFourThreeNineEightOnClick = useNavigateAction({
+    type: "url",
+    url: "/Desmos.html",
+  });
+  
+//
+const desmosContainerRef = useRef(null);
+  useEffect(() => {
+    const elt = desmosContainerRef.current;
+    if (!elt) return;
+    
+    const calculator = Desmos.GraphingCalculator(elt);
+    calculator.setExpression({ id: 'graph1', latex: `${equation?.equation}` });
+
+    return () => {
+      calculator.destroy();
+    };
+  }, [equation]);
+// This Change from another ISSUE also fixes this ISSUE 
+//so the commit should have also went to this one but i have to make another save and commit
+//
+
+//
+
+
   return (
     <Flex
       gap="0"
       direction="column"
-      width="320px"
-      height="unset"
+      width="600px"
+      height="600px"
       justifyContent="center"
       alignItems="flex-start"
       position="relative"
@@ -47,26 +74,14 @@ export default function EquationImageNoteCard(props) {
       {...getOverrideProps(overrides, "EquationImageNoteCard")}
       {...rest}
     >
-      <Image
-        width="unset"
-        height="408px"
-        display="block"
-        gap="unset"
-        alignItems="unset"
-        justifyContent="unset"
-        shrink="0"
-        alignSelf="stretch"
-        position="relative"
-        padding="0px 0px 0px 0px"
-        objectFit="cover"
-        src={equation?.image}
-        {...getOverrideProps(overrides, "image")}
-      ></Image>
+      <div ref={desmosContainerRef} style={{ width: '600px', height: '400px' }}></div>
+      
+  
       <Flex
         gap="16px"
         direction="column"
         width="unset"
-        height="unset"
+        height="200px"
         justifyContent="flex-start"
         alignItems="flex-start"
         shrink="0"
@@ -115,8 +130,8 @@ export default function EquationImageNoteCard(props) {
               {...getOverrideProps(overrides, "Frame 437")}
             >
               <View
-                width="24px"
-                height="24px"
+                width="30px"
+                height="30px"
                 display="block"
                 gap="unset"
                 alignItems="unset"
@@ -129,10 +144,9 @@ export default function EquationImageNoteCard(props) {
                 }}
                 {...getOverrideProps(overrides, "Frame 440")}
               >
-                
                 <MyIcon
-                  width="24px"
-                  height="24px"
+                  width="30px"
+                  height="30px"
                   display="block"
                   gap="unset"
                   alignItems="unset"
@@ -147,9 +161,8 @@ export default function EquationImageNoteCard(props) {
                 ></MyIcon>
               </View>
               <View
-
-                width="24px"
-                height="24px"
+                width="30px"
+                height="30px"
                 display="block"
                 gap="unset"
                 alignItems="unset"
@@ -166,8 +179,8 @@ export default function EquationImageNoteCard(props) {
                 {...getOverrideProps(overrides, "Frame 438")}
               >
                 <MyIcon
-                  width="24px"
-                  height="24px"
+                  width="30px"
+                  height="30px"
                   display="block"
                   gap="unset"
                   alignItems="unset"
@@ -181,11 +194,42 @@ export default function EquationImageNoteCard(props) {
                   {...getOverrideProps(overrides, "MyIcon42761067")}
                 ></MyIcon>
               </View>
+              <View
+                width="30px"
+                height="30px"
+                display="block"
+                gap="unset"
+                alignItems="unset"
+                justifyContent="unset"
+                shrink="0"
+                position="relative"
+                padding="0px 0px 0px 0px"
+                onClick={() => {
+                  frameFourThreeNineEightOnClick();
+                }}
+                {...getOverrideProps(overrides, "Frame 4398")}
+              >
+                <MyIcon
+                  width="30px"
+                  height="30px"
+                  display="block"
+                  gap="unset"
+                  alignItems="unset"
+                  justifyContent="unset"
+                  overflow="hidden"
+                  position="absolute"
+                  top="0px"
+                  left="0px"
+                  padding="0px 0px 0px 0px"
+                  type="content"
+                  {...getOverrideProps(overrides, "MyIcon42981042")}
+                ></MyIcon>
+              </View>
             </Flex>
           </Flex>
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="20px"
             fontWeight="700"
             color="rgba(13,26,38,1)"
             lineHeight="20px"
@@ -207,7 +251,7 @@ export default function EquationImageNoteCard(props) {
           ></Text>
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="18px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
             lineHeight="24px"
@@ -215,7 +259,7 @@ export default function EquationImageNoteCard(props) {
             display="block"
             direction="column"
             justifyContent="unset"
-            letterSpacing="0.01px"
+            letterSpacing="0.03px"
             width="unset"
             height="unset"
             gap="unset"
@@ -230,7 +274,7 @@ export default function EquationImageNoteCard(props) {
           ></Text>
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="18px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
             lineHeight="24px"
@@ -238,7 +282,7 @@ export default function EquationImageNoteCard(props) {
             display="block"
             direction="column"
             justifyContent="unset"
-            letterSpacing="0.01px"
+            letterSpacing="0.03px"
             width="unset"
             height="unset"
             gap="unset"
@@ -253,7 +297,7 @@ export default function EquationImageNoteCard(props) {
           ></Text>
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="18px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
             lineHeight="24px"
@@ -261,7 +305,7 @@ export default function EquationImageNoteCard(props) {
             display="block"
             direction="column"
             justifyContent="unset"
-            letterSpacing="0.01px"
+            letterSpacing="0.03px"
             width="unset"
             height="unset"
             gap="unset"

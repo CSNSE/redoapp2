@@ -45,9 +45,8 @@ export default function EquationCreateNote(props) {
   const frameFourFourFourOnClick = useNavigateAction({ type: "url", url: "/" });
   const frameFourThreeEightThreeOnMouseUp = useNavigateAction({
     type: "url",
-    url: "/",
+    url: "/History",
   });
-
   const frameFourThreeEightThreeOnMouseDown = useDataStoreCreateAction({
     fields: {
       equation: textFieldFourTwoSixOneNineSevenNineValue,
