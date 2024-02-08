@@ -15,10 +15,12 @@ import {
 import { schema } from "../models/schema";
 import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
+import Desmos from 'desmos'
 
 export default function EquationImageNoteCard(props) {
   const { equation, overrides, ...rest } = props;
   console.log("export image: " + equation?.image);
+  
   const frameFourFourZeroOnClick = useNavigateAction({
     type: "url",
     url: `${"/update/"}${equation?.id}`,
@@ -36,39 +38,19 @@ export default function EquationImageNoteCard(props) {
     type: "url",
     url: "/Desmos.html",
   });
-  //
-  //////////////////////// Use useEffect to initialize Desmos calculator and set expression
-    // React.useEffect(() => {
-    //   const elt = document.getElementById('calculator');
-    //   const calculator = Desmos.GraphingCalculator(elt);
-    //   calculator.setExpression({ id: 'line1', latex: 'y=' + equation?.name, color: '#ff0000' });
-    // }, [equation?.name]); // Trigger effect when equation name changes
   
-  ////////////// const DesmosComponent = () => {
-  //   useEffect(() => {
-  //     // Step 2: Add HTML element as a container
-  //     const elt = document.getElementById('calculator');
-  //     // Step 3: Initialize Desmos calculator with JavaScript
-  //     const calculator = Desmos.GraphingCalculator(elt);
-  //     calculator.setExpression({ id: 'line1', latex: 'y=x', color: '#ff0000' });
-  //   }, []); // Empty dependency array ensures useEffect runs only once after the initial render
-  
-  //   return (
-  //     <div>
-  //       <nav>
-  //         <ul>
-  //           <li><a href="/History">History</a></li>
-  //         </ul>
-  //       </nav>
-  
-  //       <div id="calculator" style={{ width: '100%', height: '600px' }}></div>
-  
-  //       {/* Additional content of your web page */}
-  //     </div>
-  //   );
-  // };
+
+  const elt = document.createElement('div')
+  elt.style.width = '600px'
+  elt.style.height = '400px'
+   
+  const calculator = Desmos.GraphingCalculator(elt)
+  calculator.setExpression({ id: 'graph1', latex: 'y=x'})
+  document.body.prepend(elt)
+
   
   return (
+    
     <Flex
       gap="0"
       direction="column"
@@ -82,34 +64,6 @@ export default function EquationImageNoteCard(props) {
       {...getOverrideProps(overrides, "EquationImageNoteCard")}
       {...rest}
     >
-      {/*
-      <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desmos Calc</title>
-
-    <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="/History">History</a></li>
-        </ul>
-    </nav>
-    <div id="calculator" style="width: flex; height: 600px;"></div>
-
-
-    <script>
-
-        var elt = document.getElementById('calculator');
-        var calculator = Desmos.GraphingCalculator(elt);
-        calculator.setExpression({ id: 'line1', latex: 'y=' + equation.name, color: '#ff0000' });
-    </script>
-
-
-  </body>
-  */}
       <Image
         width="unset"
         height="408px"
@@ -243,6 +197,7 @@ export default function EquationImageNoteCard(props) {
                   type="delete"
                   {...getOverrideProps(overrides, "MyIcon42761067")}
                 ></MyIcon>
+                
               </View>
               <View
                 width="24px"
@@ -378,5 +333,7 @@ export default function EquationImageNoteCard(props) {
         </Flex>
       </Flex>
     </Flex>
+    
   );
+  
 }

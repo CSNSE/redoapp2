@@ -19,7 +19,7 @@ class App extends Component {
         // After 3 seconds, stop redirecting to HomePage.html
         setTimeout(() => {
             this.setState({ redirectToHomePage: false });
-        }, 3000); // Adjust the delay as needed
+        }, 1000); // Adjust the delay as needed
     }
 
     render() {
@@ -35,7 +35,7 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">
                     <Routes>
-                        <Route exact path="/HomePage.html" element={<EquationHomePage2/>} />
+                        <Route path="/" element={<HomePage />} />
                         <Route exact path='/History' element={<div><EquationNavBar/><EquationImageNoteCardCollection isPaginated itemsPerPage={3} /></div>} />
                         <Route exact path='/NewNote' element={<NewNote/>}/>
                         <Route exact path='/update/:cid' element={<EditNote/>}/>
@@ -48,7 +48,9 @@ class App extends Component {
 
 // Placeholder component for HomePage.html if needed
 const HomePage = () => {
-    return <div><EquationNavBar/><EquationHomePage2/></div>;
+    // You can adjust this to serve HomePage.html or redirect to it if it's a route
+    window.location.href = "HomePage.html";
+    return null; // You can render a loading spinner or message here if needed
 };
 
 export default withAuthenticator(App);

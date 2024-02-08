@@ -11,7 +11,19 @@ import { getOverrideProps, useDataStoreBinding } from "./utils";
 import EquationImageNoteCard from "./EquationImageNoteCard";
 import { getUrl } from "@aws-amplify/storage"; //MAH add!
 import { Collection } from "@aws-amplify/ui-react";
+
+import {
+  useDataStoreDeleteAction,
+  useNavigateAction,
+} from "./utils";
+import { schema } from "../models/schema";
+import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
+import MyIcon from "./MyIcon";
+
+
 //import { Storage } from "aws-amplify";
+
+import Desmos from 'desmos'
 export default function EquationImageNoteCardCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const [items, setItems] = React.useState(undefined);
@@ -48,14 +60,12 @@ export default function EquationImageNoteCardCollection(props) {
         console.log(equation.image);
         //equation.image=getUrlResult.url;
       }
+      
       console.log(equation);
       return equation;
       })
-      //----------------
-      
-      //-------------
+
     }, [itemsProp, itemsDataStore]);
-  
 
   return (
     
@@ -82,6 +92,7 @@ export default function EquationImageNoteCardCollection(props) {
           {...(overrideItems && overrideItems({ item, index }))}
           
         >
+          
           
           {/* <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6">
             <div id="calculator" style="width: 600px; height: 400px;"><script>

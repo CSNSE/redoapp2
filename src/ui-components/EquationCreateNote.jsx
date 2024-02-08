@@ -53,7 +53,7 @@ export default function EquationCreateNote(props) {
       intercepts: textFieldFourTwoSixOneNineEightZeroValue,
       domain: textFieldFourTwoSixOneNineEightOneValue,
       range: textFieldFourTwoSixOneNineEightTwoValue,
-      image: textFieldFourTwoSevenSevenOneZeroSevenFiveValue,
+      image: imageName,
     },
     model: Equation,
     schema: schema,
