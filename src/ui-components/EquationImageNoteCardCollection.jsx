@@ -68,24 +68,19 @@ export default function EquationImageNoteCardCollection(props) {
     }, [itemsProp, itemsDataStore]);
 
   return (
-    
     <Collection
       type="list"
-      isSearchable={true}
+      isSearchable="true"
       isPaginated={true}
       searchPlaceholder="Search..."
-      itemsPerPage={3}
+      itemsPerPage={2}
       direction="row"
       alignItems="stretch"
       items={items || []}
       {...getOverrideProps(overrides, "EquationImageNoteCardCollection")}
       {...rest}
-      
-    
     >
-      
       {(item, index) => (
-        
         <EquationImageNoteCard
           equation={item}
           key={item.id}
@@ -102,7 +97,6 @@ export default function EquationImageNoteCardCollection(props) {
         </EquationImageNoteCard>
         
       )}
-      
     </Collection>
   );
 }

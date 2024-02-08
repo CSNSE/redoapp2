@@ -60,12 +60,11 @@ const desmosContainerRef = useRef(null);
 
 
   return (
-    
     <Flex
       gap="0"
       direction="column"
-      width="320px"
-      height="unset"
+      width="600px"
+      height="600px"
       justifyContent="center"
       alignItems="flex-start"
       position="relative"
@@ -81,7 +80,7 @@ const desmosContainerRef = useRef(null);
         gap="16px"
         direction="column"
         width="unset"
-        height="unset"
+        height="200px"
         justifyContent="flex-start"
         alignItems="flex-start"
         shrink="0"
@@ -130,8 +129,8 @@ const desmosContainerRef = useRef(null);
               {...getOverrideProps(overrides, "Frame 437")}
             >
               <View
-                width="24px"
-                height="24px"
+                width="30px"
+                height="30px"
                 display="block"
                 gap="unset"
                 alignItems="unset"
@@ -144,10 +143,9 @@ const desmosContainerRef = useRef(null);
                 }}
                 {...getOverrideProps(overrides, "Frame 440")}
               >
-                
                 <MyIcon
-                  width="24px"
-                  height="24px"
+                  width="30px"
+                  height="30px"
                   display="block"
                   gap="unset"
                   alignItems="unset"
@@ -162,9 +160,8 @@ const desmosContainerRef = useRef(null);
                 ></MyIcon>
               </View>
               <View
-
-                width="24px"
-                height="24px"
+                width="30px"
+                height="30px"
                 display="block"
                 gap="unset"
                 alignItems="unset"
@@ -181,8 +178,8 @@ const desmosContainerRef = useRef(null);
                 {...getOverrideProps(overrides, "Frame 438")}
               >
                 <MyIcon
-                  width="24px"
-                  height="24px"
+                  width="30px"
+                  height="30px"
                   display="block"
                   gap="unset"
                   alignItems="unset"
@@ -195,11 +192,10 @@ const desmosContainerRef = useRef(null);
                   type="delete"
                   {...getOverrideProps(overrides, "MyIcon42761067")}
                 ></MyIcon>
-                
               </View>
               <View
-                width="24px"
-                height="24px"
+                width="30px"
+                height="30px"
                 display="block"
                 gap="unset"
                 alignItems="unset"
@@ -213,8 +209,8 @@ const desmosContainerRef = useRef(null);
                 {...getOverrideProps(overrides, "Frame 4398")}
               >
                 <MyIcon
-                  width="24px"
-                  height="24px"
+                  width="30px"
+                  height="30px"
                   display="block"
                   gap="unset"
                   alignItems="unset"
@@ -232,7 +228,7 @@ const desmosContainerRef = useRef(null);
           </Flex>
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="20px"
             fontWeight="700"
             color="rgba(13,26,38,1)"
             lineHeight="20px"
@@ -252,10 +248,9 @@ const desmosContainerRef = useRef(null);
             children={equation?.equation}
             {...getOverrideProps(overrides, "Equation")}
           ></Text>
-          
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="18px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
             lineHeight="24px"
@@ -263,7 +258,7 @@ const desmosContainerRef = useRef(null);
             display="block"
             direction="column"
             justifyContent="unset"
-            letterSpacing="0.01px"
+            letterSpacing="0.03px"
             width="unset"
             height="unset"
             gap="unset"
@@ -278,7 +273,7 @@ const desmosContainerRef = useRef(null);
           ></Text>
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="18px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
             lineHeight="24px"
@@ -286,7 +281,7 @@ const desmosContainerRef = useRef(null);
             display="block"
             direction="column"
             justifyContent="unset"
-            letterSpacing="0.01px"
+            letterSpacing="0.03px"
             width="unset"
             height="unset"
             gap="unset"
@@ -299,15 +294,9 @@ const desmosContainerRef = useRef(null);
             children={equation?.domain}
             {...getOverrideProps(overrides, "Domain")}
           ></Text>
-          {/* <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6">
-            <div id="calculator" style="width: 600px; height: 400px;"><script>
-  var elt = document.getElementById('calculator');
-  var calculator = Desmos.GraphingCalculator(elt);
-</script></div></script> */}
-          
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="18px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
             lineHeight="24px"
@@ -315,7 +304,7 @@ const desmosContainerRef = useRef(null);
             display="block"
             direction="column"
             justifyContent="unset"
-            letterSpacing="0.01px"
+            letterSpacing="0.03px"
             width="unset"
             height="unset"
             gap="unset"
@@ -331,7 +320,5 @@ const desmosContainerRef = useRef(null);
         </Flex>
       </Flex>
     </Flex>
-    
   );
-  
 }
