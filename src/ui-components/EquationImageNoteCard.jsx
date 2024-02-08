@@ -45,7 +45,7 @@ const desmosContainerRef = useRef(null);
   useEffect(() => {
     const elt = desmosContainerRef.current;
     if (!elt) return;
-
+    
     const calculator = Desmos.GraphingCalculator(elt);
     calculator.setExpression({ id: 'graph1', latex: `${equation?.equation}` });
 
