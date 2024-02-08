@@ -73,7 +73,7 @@ export default function EquationImageNoteCardCollection(props) {
       isSearchable="true"
       isPaginated={true}
       searchPlaceholder="Search..."
-      itemsPerPage={2}
+      itemsPerPage={3}
       direction="row"
       alignItems="stretch"
       items={items || []}

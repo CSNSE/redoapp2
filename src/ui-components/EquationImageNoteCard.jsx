@@ -47,7 +47,7 @@ const desmosContainerRef = useRef(null);
     if (!elt) return;
 
     const calculator = Desmos.GraphingCalculator(elt);
-    calculator.setExpression({ id: 'graph1', latex: `y=${equation?.equation}` });
+    calculator.setExpression({ id: 'graph1', latex: `${equation?.equation}` });
 
     return () => {
       calculator.destroy();
@@ -57,6 +57,7 @@ const desmosContainerRef = useRef(null);
 //so the commit should have also went to this one but i have to make another save and commit
 //
 
+//
 
 
   return (

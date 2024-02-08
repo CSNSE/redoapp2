@@ -12,6 +12,7 @@ class App extends Component {
         super(props);
         this.state = {
             redirectToHomePage: true // Set to true initially to redirect on startup
+            
         };
     }
 
@@ -50,6 +51,11 @@ class App extends Component {
 const HomePage = () => {
     // You can adjust this to serve HomePage.html or redirect to it if it's a route
     window.location.href = "HomePage.html";
+    return null; // You can render a loading spinner or message here if needed
+};
+const HelpFunctions = () => {
+    // You can adjust this to serve HomePage.html or redirect to it if it's a route
+    window.location.href = "HelpFunctions.html";
     return null; // You can render a loading spinner or message here if needed
 };
 
