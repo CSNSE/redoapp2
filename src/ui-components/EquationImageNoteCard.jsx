@@ -5,7 +5,8 @@
  **************************************************************************/
 
 /* eslint-disable */
-import * as React from "react";
+//import * as React from "react";
+import React, { useRef, useEffect } from "react"; 
 import { Equation } from "../models";
 import {
   getOverrideProps,
@@ -39,16 +40,24 @@ export default function EquationImageNoteCard(props) {
     url: "/Desmos.html",
   });
   
+//
+const desmosContainerRef = useRef(null);
+  useEffect(() => {
+    const elt = desmosContainerRef.current;
+    if (!elt) return;
 
-  const elt = document.createElement('div')
-  elt.style.width = '600px'
-  elt.style.height = '400px'
-   
-  const calculator = Desmos.GraphingCalculator(elt)
-  calculator.setExpression({ id: 'graph1', latex: 'y=x'})
-  document.body.prepend(elt)
+    const calculator = Desmos.GraphingCalculator(elt);
+    calculator.setExpression({ id: 'graph1', latex: `y=${equation?.equation}` });
 
-  
+    return () => {
+      calculator.destroy();
+    };
+  }, [equation]);
+
+//
+
+
+
   return (
     
     <Flex
@@ -64,6 +73,8 @@ export default function EquationImageNoteCard(props) {
       {...getOverrideProps(overrides, "EquationImageNoteCard")}
       {...rest}
     >
+      <div ref={desmosContainerRef} style={{ width: '600px', height: '400px' }}></div>
+      
       <Image
         width="unset"
         height="408px"
