@@ -322,6 +322,7 @@ export default function EquationCreateNote(props) {
             backgroundColor="rgba(78,165,202,1)"
             {...getOverrideProps(overrides, "Create/default/false/primary")}
           ></Buttondefaultfalseprimary>
+          
         </View>
       </Flex>
     </Flex>

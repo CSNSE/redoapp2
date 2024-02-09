@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Adjust alignment as needed */
+}
+
+.equation-create-note {
+  margin-bottom: 20px; /* Add margin to the bottom of the EquationCreateNote component */
+}
+
+.help-page-syntax {
+  width: 45%; /* Adjust width as needed */
+  padding: 20px; /* Adjust padding as needed */
+  border: 1px solid #ccc; /* Example border */
+}

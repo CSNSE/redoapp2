@@ -3,7 +3,7 @@ import './App.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import NewNote from './NewNote';
-import {EquationNoteCardCollection, EquationNavBar, EquationImageNoteCardCollection, EquationHomePage2} from "./ui-components";
+import {EquationNoteCardCollection, EquationNavBar, EquationImageNoteCardCollection, EquationHomePage2, HelpPageSyntax} from "./ui-components";
 import EditNote from './EditNote';
 import DesmosCalculator from './DesmosCalculator';
 

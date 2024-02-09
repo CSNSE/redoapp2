@@ -1,20 +1,25 @@
-import React, { Component } from 'react'
-import { EquationCreateForm, EquationCreateNote, NewNavBar } from "./ui-components";
+import React, { Component } from 'react';
+import { EquationCreateNote, HelpPageSyntax, NewNavBar } from "./ui-components";
 import "./App.css";
 
 class NewNote extends Component {
     render(){
-        return (<Put />);
+        return (
+            <div className="container">
+                <header className="App-header">
+                <div><h1></h1></div>
+                    <NewNavBar/>
+                    <div><h1></h1></div>
+
+                    <EquationCreateNote className="equation-create-note" />
+                    <div><h1></h1></div>
+                    <HelpPageSyntax className="help-page-syntax" />
+                    <div><h1></h1></div>
+                    
+                </header>
+            </div>
+        );
     }
 }
-//Useless change
-  function Put() {
-    return (
-      <div><header className="App-header">
-        <NewNavBar/>
-        <EquationCreateNote style={{ textAlign: "left"}} />
-        </header></div>
-      );
-    }
 
-export default NewNote
+export default NewNote;
