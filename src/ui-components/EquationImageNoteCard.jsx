@@ -45,10 +45,16 @@ const desmosContainerRef = useRef(null);
   useEffect(() => {
     const elt = desmosContainerRef.current;
     if (!elt) return;
-    
+    //Clem Notes: Create calc object 
     const calculator = Desmos.GraphingCalculator(elt);
+    //Set equation
     calculator.setExpression({ id: 'graph1', latex: `${equation?.equation}` });
-
+    // Intercepts
+    var a = calculator.HelperExpression({ latex: `${equation?.equation}` });
+    a.observe('numericValue', function() {
+      console.log(a.numericValue);
+    });
+    // End of intercept addition
     return () => {
       calculator.destroy();
     };
