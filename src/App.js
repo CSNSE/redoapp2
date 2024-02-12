@@ -46,7 +46,7 @@ class App extends Component {
         );
     }
 }
-//Empty Commites 1
+//This is an empty commite because I actually 
 // Placeholder component for HomePage.html if needed
 const HomePage = () => {
     // You can adjust this to serve HomePage.html or redirect to it if it's a route
