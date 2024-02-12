@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { EquationCreateNote, HelpPageSyntax, NewNavBar } from "./ui-components";
+import { EquationCreateNote, HelpPageSyntax, EquationNavBar } from "./ui-components";
 import "./App.css";
 
 class NewNote extends Component {
@@ -8,7 +8,7 @@ class NewNote extends Component {
             <div className="container">
                 <header className="App-header">
                 <div><h1></h1></div>
-                    <NewNavBar/>
+                    <EquationNavBar/>
                     <div><h1></h1></div>
 
                     <EquationCreateNote className="equation-create-note" />
