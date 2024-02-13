@@ -47,14 +47,19 @@ const desmosContainerRef = useRef(null);
     if (!elt) return;
     //Clem Notes: Create calc object 
     const calculator = Desmos.GraphingCalculator(elt);
+    
+
+    //IF you are looking at this Mr. Headrick, This took ABSOLUTE AGES TO DO. 
     //Set equation
-    calculator.setExpression({ id: 'graph1', latex: `${equation?.equation}` });
-    // Intercepts
-    var a = calculator.HelperExpression({ latex: `${equation?.equation}` });
-    a.observe('numericValue', function() {
-      console.log(a.numericValue);
-    });
-    // End of intercept addition
+    calculator.setExpression({ id: 'graph1', latex: `F(x)=${equation?.equation}` });
+    calculator.setExpression({ id: 'graph3', latex: `P(x)=0` });
+    //Find y intercept
+    calculator.setExpression({ id: 'graph2', latex: `F(0)` });
+    //find x intercept using black magic
+    calculator.setExpression({ id: 'graph4', latex: `P(x_1)~F(x_1)`});
+    calculator.setExpression({ id: 'graph5', latex: `y_1=F(x_1)`});
+    calculator.setExpression({ id: 'graph6', latex: `(x_1,y_1)`, color: Desmos.Colors.ORANGE});
+    //
     return () => {
       calculator.destroy();
     };
