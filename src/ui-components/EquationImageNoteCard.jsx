@@ -59,6 +59,13 @@ const desmosContainerRef = useRef(null);
     calculator.setExpression({ id: 'graph4', latex: `P(x_1)~F(x_1)`});
     calculator.setExpression({ id: 'graph5', latex: `y_1=F(x_1)`});
     calculator.setExpression({ id: 'graph6', latex: `(x_1,y_1)`, color: Desmos.Colors.ORANGE});
+    //Get values of functions 
+    var helper = calculator.HelperExpression({id: 'graph1', latex: 'F(1)'});
+    helper.observe('numericValue', function() {
+      console.log("a: " + helper.numericValue);
+    });
+    //Set Value of intercepts using values
+    // This is commented out because Model is ReadOnly equation.intercepts = helper.numericValue;
     //
     return () => {
       calculator.destroy();

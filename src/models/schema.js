@@ -22,21 +22,24 @@ export const schema = {
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isReadOnly": false
                 },
                 "domain": {
                     "name": "domain",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isReadOnly": false
                 },
                 "range": {
                     "name": "range",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isReadOnly": false
                 },
                 "createdAt": {
                     "name": "createdAt",
