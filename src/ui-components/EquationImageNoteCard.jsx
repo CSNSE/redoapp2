@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 //import * as React from "react";
-import React, { useRef, useEffect } from "react"; 
+import React, { useRef, useEffect, useState } from "react"; 
 import { Equation } from "../models";
 import {
   getOverrideProps,
@@ -41,8 +41,10 @@ export default function EquationImageNoteCard(props) {
   });
   
 //
+const [intercepts, setIntercepts] = useState(null);
 const desmosContainerRef = useRef(null);
   useEffect(() => {
+    
     const elt = desmosContainerRef.current;
     if (!elt) return;
     //Clem Notes: Create calc object 
@@ -62,14 +64,22 @@ const desmosContainerRef = useRef(null);
     //Get values of functions 
     var helper1 = calculator.HelperExpression({id: 'graph1', latex: 'F(0)'});
     helper1.observe('numericValue', function() {
-      console.log("y-axis intercept: " + helper1.numericValue);
+      const yAxisIntercept = helper1.numericValue;
+      if (yAxisIntercept !== null) {
+        setIntercepts(prevState => ({ ...prevState, yAxisIntercept }));
+      }
     });
     var helper2 = calculator.HelperExpression({id: 'graph1', latex: 'x_1'});
     helper2.observe('numericValue', function() {
-      console.log("x-axis intercept: " + helper2.numericValue);
+      const xAxisIntercept = helper2.numericValue;
+      if (xAxisIntercept !== null) {
+        setIntercepts(prevState => ({ ...prevState, xAxisIntercept }));
+      }
     });
+    
 
     //Set Value of intercepts using values
+  // Calculate intercepts only when both yAxisIntercept and xAxisIntercept are defined
 
     // This is commented out because Model is ReadOnly so the following code doesn't work equation.intercepts = helper.numericValue;
     //
@@ -256,7 +266,7 @@ const desmosContainerRef = useRef(null);
             fontSize="20px"
             fontWeight="700"
             color="rgba(13,26,38,1)"
-            lineHeight="20px"
+            lineHeight="15px"
             textAlign="left"
             display="block"
             direction="column"
@@ -273,35 +283,62 @@ const desmosContainerRef = useRef(null);
             children={equation?.equation}
             {...getOverrideProps(overrides, "Equation")}
           ></Text>
+                  {intercepts && (
+          <>
+            <Text
+              fontFamily="Inter"
+              fontSize="18px"
+              fontWeight="400"
+              color="rgba(48,64,80,1)"
+              lineHeight="15px"
+              textAlign="left"
+              display="block"
+              direction="column"
+              justifyContent="unset"
+              letterSpacing="0.03px"
+              width="unset"
+              height="unset"
+              gap="unset"
+              alignItems="unset"
+              shrink="0"
+              alignSelf="stretch"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              whiteSpace="pre-wrap"
+              children={`Y-Intercept: ${intercepts.yAxisIntercept}`}
+              {...getOverrideProps(overrides, "Intercepts")}
+            ></Text>
+            <Text
+              fontFamily="Inter"
+              fontSize="18px"
+              fontWeight="400"
+              color="rgba(48,64,80,1)"
+              lineHeight="15px"
+              textAlign="left"
+              display="block"
+              direction="column"
+              justifyContent="unset"
+              letterSpacing="0.03px"
+              width="unset"
+              height="unset"
+              gap="unset"
+              alignItems="unset"
+              shrink="0"
+              alignSelf="stretch"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              whiteSpace="pre-wrap"
+              children={`X-Intercept: ${intercepts.xAxisIntercept}`}
+              {...getOverrideProps(overrides, "Intercepts")}
+            ></Text>
+          </>
+        )}
           <Text
             fontFamily="Inter"
             fontSize="18px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
-            lineHeight="24px"
-            textAlign="left"
-            display="block"
-            direction="column"
-            justifyContent="unset"
-            letterSpacing="0.03px"
-            width="unset"
-            height="unset"
-            gap="unset"
-            alignItems="unset"
-            shrink="0"
-            alignSelf="stretch"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children={equation?.intercepts}
-            {...getOverrideProps(overrides, "Intercepts")}
-          ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="18px"
-            fontWeight="400"
-            color="rgba(48,64,80,1)"
-            lineHeight="24px"
+            lineHeight="15px"
             textAlign="left"
             display="block"
             direction="column"
@@ -324,7 +361,7 @@ const desmosContainerRef = useRef(null);
             fontSize="18px"
             fontWeight="400"
             color="rgba(48,64,80,1)"
-            lineHeight="24px"
+            lineHeight="15px"
             textAlign="left"
             display="block"
             direction="column"
