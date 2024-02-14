@@ -60,12 +60,18 @@ const desmosContainerRef = useRef(null);
     calculator.setExpression({ id: 'graph5', latex: `y_1=F(x_1)`});
     calculator.setExpression({ id: 'graph6', latex: `(x_1,y_1)`, color: Desmos.Colors.ORANGE});
     //Get values of functions 
-    var helper = calculator.HelperExpression({id: 'graph1', latex: 'F(1)'});
-    helper.observe('numericValue', function() {
-      console.log("a: " + helper.numericValue);
+    var helper1 = calculator.HelperExpression({id: 'graph1', latex: 'F(0)'});
+    helper1.observe('numericValue', function() {
+      console.log("y-axis intercept: " + helper1.numericValue);
     });
+    var helper2 = calculator.HelperExpression({id: 'graph1', latex: 'x_1'});
+    helper2.observe('numericValue', function() {
+      console.log("x-axis intercept: " + helper2.numericValue);
+    });
+
     //Set Value of intercepts using values
-    // This is commented out because Model is ReadOnly equation.intercepts = helper.numericValue;
+
+    // This is commented out because Model is ReadOnly so the following code doesn't work equation.intercepts = helper.numericValue;
     //
     return () => {
       calculator.destroy();
