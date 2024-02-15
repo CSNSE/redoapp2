@@ -42,6 +42,10 @@ export default function EquationImageNoteCard(props) {
   
 //
 const [intercepts, setIntercepts] = useState(null);
+const [domain, setDomain] = useState({ min: null, max: null });
+const [range, setRange] = useState({ min: null, max: null });
+
+
 const desmosContainerRef = useRef(null);
   useEffect(() => {
     
@@ -55,13 +59,13 @@ const desmosContainerRef = useRef(null);
     //Set equation
     calculator.setExpression({ id: 'graph1', latex: `F(x)=${equation?.equation}` });
     calculator.setExpression({ id: 'graph3', latex: `P(x)=0` });
-    //Find y intercept
+    //expressions for Finding y intercept
     calculator.setExpression({ id: 'graph2', latex: `F(0)` });
-    //find x intercept using black magic
+    //expressions for finding x intercept using black magic
     calculator.setExpression({ id: 'graph4', latex: `P(x_1)~F(x_1)`});
     calculator.setExpression({ id: 'graph5', latex: `y_1=F(x_1)`});
     calculator.setExpression({ id: 'graph6', latex: `(x_1,y_1)`, color: Desmos.Colors.ORANGE});
-    //Get values of functions 
+    //Get values of Intercepts to set
     var helper1 = calculator.HelperExpression({id: 'graph1', latex: 'F(0)'});
     helper1.observe('numericValue', function() {
       const yAxisIntercept = helper1.numericValue;
@@ -76,15 +80,35 @@ const desmosContainerRef = useRef(null);
         setIntercepts(prevState => ({ ...prevState, xAxisIntercept }));
       }
     });
+    //Getting Domain and Range
+
+    var domainExpression = calculator.HelperExpression({ id: 'graph1', latex: 'F(x)' });
+    domainExpression.observe('numericValue', function() {
+      
+      const xValue = domainExpression.numericValue;
+      console.log("Domain xValue:", xValue); // Debugging statement
+      if (!isNaN(xValue)) {
+        setDomain(prevState => ({ ...prevState, min: Math.min(prevState.min || xValue, xValue), max: Math.max(prevState.max || xValue, xValue) }));
+      }
+    });
+
+    var rangeExpression = calculator.HelperExpression({ id: 'graph1', latex: 'F(x)' });
+    rangeExpression.observe('numericValue', function() {
+      const yValue = rangeExpression.numericValue;
+      console.log("Range yValue:", yValue); // Debugging statement
+      if (!isNaN(yValue)) {
+        setRange(prevState => ({ ...prevState, min: Math.min(prevState.min || yValue, yValue), max: Math.max(prevState.max || yValue, yValue) }));
+      }
+    });
     
 
     //Set Value of intercepts using values
-  // Calculate intercepts only when both yAxisIntercept and xAxisIntercept are defined
-
+    // Calculate intercepts only when both yAxisIntercept and xAxisIntercept are defined
     // This is commented out because Model is ReadOnly so the following code doesn't work equation.intercepts = helper.numericValue;
     //
     return () => {
       calculator.destroy();
+
     };
   }, [equation]);
 // This Change from another ISSUE also fixes this ISSUE 
@@ -333,6 +357,7 @@ const desmosContainerRef = useRef(null);
             ></Text>
           </>
         )}
+          {domain && (
           <Text
             fontFamily="Inter"
             fontSize="18px"
@@ -353,9 +378,11 @@ const desmosContainerRef = useRef(null);
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={equation?.domain}
+            children={`Domain: [${domain.min}, ${domain.max}]`}
             {...getOverrideProps(overrides, "Domain")}
           ></Text>
+        )}
+        {range && (
           <Text
             fontFamily="Inter"
             fontSize="18px"
@@ -376,9 +403,10 @@ const desmosContainerRef = useRef(null);
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={equation?.range}
+            children={`Range: [${range.min}, ${range.max}]`}
             {...getOverrideProps(overrides, "Range")}
           ></Text>
+        )}
         </Flex>
       </Flex>
     </Flex>
