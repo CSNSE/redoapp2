@@ -67,6 +67,7 @@ const desmosContainerRef = useRef(null);
     calculator.setExpression({ id: 'graph4', latex: `P(x_1)~F(x_1)`});
     calculator.setExpression({ id: 'graph5', latex: `y_1=F(x_1)`});
     calculator.setExpression({ id: 'graph6', latex: `(x_1,y_1)`, color: Desmos.Colors.ORANGE});
+    calculator.setExpression({ id: 'graph7'});
     //Get values of Intercepts to set
     var helper1 = calculator.HelperExpression({id: 'graph1', latex: 'F(0)'});
     helper1.observe('numericValue', function() {
@@ -84,6 +85,13 @@ const desmosContainerRef = useRef(null);
     });
     //Getting Domain and Range
 //
+var dom = calculator.HelperExpression({id: 'graph1', latex: 'x_1'});
+dom.observe('numericValue', function() {
+  const domainExpression = dom.numericValue;
+  if (xAxisIntercept !== null) {
+    setIntercepts(prevState => ({ ...prevState, xAxisIntercept }));
+  }
+});
 //
 //
 //
