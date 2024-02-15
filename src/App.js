@@ -50,7 +50,7 @@ class App extends Component {
 // Placeholder component for HomePage.html if needed
 const HomePage = () => {
     // You can adjust this to serve HomePage.html or redirect to it if it's a route
-    window.location.href = "/HomePage.html";
+    window.location.href = "../HomePage.html";
     return null; // You can render a loading spinner or message here if needed
 };
 const HelpFunctions = () => {
