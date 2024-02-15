@@ -42,9 +42,11 @@ export default function EquationImageNoteCard(props) {
   
 //
 const [intercepts, setIntercepts] = useState(null);
-const [domain, setDomain] = useState({ min: null, max: null });
-const [range, setRange] = useState({ min: null, max: null });
+// const [domain, setDomain] = useState({ min: null, max: null });
+// const [range, setRange] = useState({ min: null, max: null });
 
+const [domain, setDomain] = useState("");
+const [range, setRange] = useState("");
 
 const desmosContainerRef = useRef(null);
   useEffect(() => {
@@ -81,31 +83,89 @@ const desmosContainerRef = useRef(null);
       }
     });
     //Getting Domain and Range
-
-    var domainExpression = calculator.HelperExpression({ id: 'graph1', latex: 'F(x)' });
-    domainExpression.observe('numericValue', function() {
+//
+//
+//
+//
+    // var domainExpression = calculator.HelperExpression({ id: 'graph1', latex: 'F(x)' });
+    // domainExpression.observe('numericValue', function() {
       
-      const xValue = domainExpression.numericValue;
-      console.log("Domain xValue:", xValue); // Debugging statement
-      if (!isNaN(xValue)) {
-        setDomain(prevState => ({ ...prevState, min: Math.min(prevState.min || xValue, xValue), max: Math.max(prevState.max || xValue, xValue) }));
-      }
-    });
+    //   const xValue = domainExpression.numericValue;
+    //   console.log("Domain xValue:", xValue); // Debugging statement
+    //   if (!isNaN(xValue)) {
+    //     setDomain(prevState => ({ ...prevState, min: Math.min(prevState.min || xValue, xValue), max: Math.max(prevState.max || xValue, xValue) }));
+    //   }
+    // });
 
-    var rangeExpression = calculator.HelperExpression({ id: 'graph1', latex: 'F(x)' });
-    rangeExpression.observe('numericValue', function() {
-      const yValue = rangeExpression.numericValue;
-      console.log("Range yValue:", yValue); // Debugging statement
-      if (!isNaN(yValue)) {
-        setRange(prevState => ({ ...prevState, min: Math.min(prevState.min || yValue, yValue), max: Math.max(prevState.max || yValue, yValue) }));
+    // var rangeExpression = calculator.HelperExpression({ id: 'graph1', latex: 'F(x)' });
+    // rangeExpression.observe('numericValue', function() {
+    //   const yValue = rangeExpression.numericValue;
+    //   console.log("Range yValue:", yValue); // Debugging statement
+    //   if (!isNaN(yValue)) {
+    //     setRange(prevState => ({ ...prevState, min: Math.min(prevState.min || yValue, yValue), max: Math.max(prevState.max || yValue, yValue) }));
+    //   }
+    // });
+    //
+    //
+    //
+    //
+    // Analyze the function to determine domain and range
+    const analyzeFunction = () => {
+      // Determine domain based on function type
+      let functionType = "unknown";
+      if (equation?.equation.includes("x")) {
+        functionType = "polynomial";
       }
-    });
-    
+      // Check for other function types if needed
+      // For simplicity, assuming polynomial for this example
+
+      let domain = "";
+      if (functionType === "polynomial") {
+        domain = "(-∞, ∞)"; // All polynomials are defined for all real numbers
+      }
+
+      // Determine range based on function behavior
+      let range = "";
+      if (functionType === "polynomial") {
+        // For polynomial functions, the range depends on the leading coefficient and the degree
+        const leadingCoefficient = equation.equation.split("*")[0];
+        const degree = equation.equation.split("^")[1];
+
+        if (leadingCoefficient > 0) {
+          // If leading coefficient is positive
+          if (degree % 2 === 0) {
+            // If degree is even
+            range = "(0, ∞)";
+          } else {
+            // If degree is odd
+            range = "(-∞, ∞)";
+          }
+        } else if (leadingCoefficient < 0) {
+          // If leading coefficient is negative
+          if (degree % 2 === 0) {
+            // If degree is even
+            range = "(-∞, 0)";
+          } else {
+            // If degree is odd
+            range = "(-∞, ∞)";
+          }
+        } else {
+          // If leading coefficient is zero (unlikely for polynomials)
+          range = "(-∞, ∞)";
+        }
+      }
+      // Add other function type checks and range determination if needed
+
+      setDomain(domain);
+      setRange(range);
+    };
 
     //Set Value of intercepts using values
     // Calculate intercepts only when both yAxisIntercept and xAxisIntercept are defined
     // This is commented out because Model is ReadOnly so the following code doesn't work equation.intercepts = helper.numericValue;
     //
+    analyzeFunction();
+
     return () => {
       calculator.destroy();
 
@@ -378,7 +438,7 @@ const desmosContainerRef = useRef(null);
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={`Domain: [${domain.min}, ${domain.max}]`}
+            children={`Domain: ${domain}`}
             {...getOverrideProps(overrides, "Domain")}
           ></Text>
         )}
@@ -403,7 +463,7 @@ const desmosContainerRef = useRef(null);
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={`Range: [${range.min}, ${range.max}]`}
+            children={`Range: ${range}`}
             {...getOverrideProps(overrides, "Range")}
           ></Text>
         )}
