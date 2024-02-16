@@ -36,7 +36,7 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="/" element={<HomePage/>} />
                         <Route exact path='/History' element={<div><EquationNavBar/><EquationImageNoteCardCollection isPaginated itemsPerPage={2} /></div>} />
                         <Route exact path='/NewNote' element={<NewNote/>}/>
                         <Route exact path='/update/:cid' element={<EditNote/>}/>
@@ -50,13 +50,7 @@ class App extends Component {
 // Placeholder component for HomePage.html if needed
 const HomePage = () => {
     // You can adjust this to serve HomePage.html or redirect to it if it's a route
-    window.location.href = "../HomePage.html";
-    return null; // You can render a loading spinner or message here if needed
-};
-const HelpFunctions = () => {
-    // You can adjust this to serve HomePage.html or redirect to it if it's a route
-    window.location.href = "HelpFunctions.html";
-    return null; // You can render a loading spinner or message here if needed
-};
+    window.location.href = "/HomePage.html";
 
+};
 export default withAuthenticator(App);
