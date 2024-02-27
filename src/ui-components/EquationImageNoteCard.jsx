@@ -59,7 +59,7 @@ const desmosContainerRef = useRef(null);
 
     //IF you are looking at this Mr. Headrick, This took ABSOLUTE AGES TO DO. 
     //Set equation
-    calculator.setExpression({ id: 'graph1', latex: `F(x)=${equation?.equation}` });
+    calculator.setExpression({ id: 'graph1', latex: `F(x)=${equation?.equation}\\left\\{${equation.domain}\\right\\}` });
     calculator.setExpression({ id: 'graph3', latex: `P(x)=0` });
     //expressions for Finding y intercept
     calculator.setExpression({ id: 'graph2', latex: `F(0)` });
