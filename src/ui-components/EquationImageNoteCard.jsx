@@ -59,14 +59,15 @@ const desmosContainerRef = useRef(null);
 
     //IF you are looking at this Mr. Headrick, This took ABSOLUTE AGES TO DO. 
     //Set equation
-    calculator.setExpression({ id: 'graph1', latex: `F(x)=${equation?.equation}\\left\\{${equation.domain}\\right\\}` });
-    calculator.setExpression({ id: 'graph3', latex: `P(x)=0` });
+    calculator.setExpression({ id: 'graph1', latex: `F(x)=${equation?.equation}`, color: Desmos.Colors.GREEN, lineStyle: Desmos.Styles.DASHED });
+    calculator.setExpression({ id: 'graph2', latex: `y=F(x)\\left\\{${equation.domain}\\right\\}\\left\\{${equation.range}\\right\\}`, color: Desmos.Colors.RED, lineStyle: Desmos.Styles.SOLID });
+    calculator.setExpression({ id: 'graph4', latex: `P(x)=0`, color: Desmos.Colors.BLUE });
     //expressions for Finding y intercept
-    calculator.setExpression({ id: 'graph2', latex: `F(0)` });
+    calculator.setExpression({ id: 'graph3', latex: `F(0)` });
     //expressions for finding x intercept using black magic
-    calculator.setExpression({ id: 'graph4', latex: `P(x_1)~F(x_1)`});
-    calculator.setExpression({ id: 'graph5', latex: `y_1=F(x_1)`});
-    calculator.setExpression({ id: 'graph6', latex: `(x_1,y_1)`, color: Desmos.Colors.ORANGE});
+    calculator.setExpression({ id: 'graph5', latex: `P(x_1)~F(x_1)`});
+    calculator.setExpression({ id: 'graph6', latex: `y_1=F(x_1)`});
+    calculator.setExpression({ id: 'graph7', latex: `(x_1,y_1)`, color: Desmos.Colors.PURPLE});
     //Get values of Intercepts to set
     var helper1 = calculator.HelperExpression({id: 'graph1', latex: 'F(0)'});
     helper1.observe('numericValue', function() {
