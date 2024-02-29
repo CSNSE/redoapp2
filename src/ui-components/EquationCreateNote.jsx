@@ -96,7 +96,7 @@ export default function EquationCreateNote(props) {
       gap="16px"
       direction="column"
       width="320px"
-      height="698px"
+      height="420px"
       justifyContent="flex-start"
       alignItems="flex-start"
       position="relative"
@@ -109,7 +109,7 @@ export default function EquationCreateNote(props) {
         gap="24px"
         direction="column"
         width="unset"
-        height="698px"
+        height="420px"
         justifyContent="flex-start"
         alignItems="flex-start"
         shrink="0"
@@ -188,7 +188,7 @@ export default function EquationCreateNote(props) {
           gap="16px"
           direction="column"
           width="unset"
-          height="550px"
+          height="270px"
           justifyContent="flex-start"
           alignItems="flex-start"
           shrink="0"
@@ -214,7 +214,7 @@ export default function EquationCreateNote(props) {
             }}
             {...getOverrideProps(overrides, "TextField4261979")}
           ></TextField>
-          <TextField
+          {/* <TextField
             width="unset"
             height="unset"
             label="Intercepts"
@@ -230,12 +230,12 @@ export default function EquationCreateNote(props) {
               setTextFieldFourTwoSixOneNineEightZeroValue(event.target.value);
             }}
             {...getOverrideProps(overrides, "TextField4261980")}
-          ></TextField>
+          ></TextField> */}
           <TextField
             width="unset"
             height="unset"
             label="Domain"
-            placeholder="[1,4]"
+            placeholder="2<=x<9"
             shrink="0"
             alignSelf="stretch"
             size="default"
@@ -252,7 +252,7 @@ export default function EquationCreateNote(props) {
             width="unset"
             height="unset"
             label="Range"
-            placeholder="[5,6]"
+            placeholder="-1<y<15"
             shrink="0"
             alignSelf="stretch"
             size="default"
@@ -265,7 +265,7 @@ export default function EquationCreateNote(props) {
             }}
             {...getOverrideProps(overrides, "TextField4261982")}
           ></TextField>
-           <Field
+           {/* <Field
 
         label={"Image"}
         isRequired={false}
@@ -285,7 +285,7 @@ export default function EquationCreateNote(props) {
           maxFileCount={1}
           {...getOverrideProps(overrides, "image")}
         ></StorageManager>
-      </Field>
+      </Field> */}
         </Flex>
         <View
           width="71px"

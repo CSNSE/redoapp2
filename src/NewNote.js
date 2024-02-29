@@ -9,7 +9,7 @@ class NewNote extends Component {
                 <header className="App-header">
                 <div><h1></h1></div>
                     <EquationNavBar/>
-                    <div><h1></h1></div>
+                    {/* <div><h1></h1></div> */}
 
                     <EquationCreateNote className="equation-create-note" />
                     <div><h1></h1></div>
