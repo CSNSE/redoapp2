@@ -19,7 +19,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <ThemeProvider theme={studioTheme}>
-                <App />
+                <App/>
             </ThemeProvider>
         </BrowserRouter>
     </React.StrictMode>,
