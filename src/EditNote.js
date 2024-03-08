@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { EquationNavBar, EquationRealEditNote, EquationUpdateForm } from "./ui-components";
+import { EquationNavBar, EquationRealEditNote, EquationUpdateForm, HelpPageSyntax } from "./ui-components";
 
 import { generateClient } from "aws-amplify/api";
 import "./App.css";
@@ -17,6 +17,7 @@ function EditNote() {
             <div><header className="App-header">
                 <EquationNavBar />
                 <EquationRealEditNote idProp={cid}/>
+                <HelpPageSyntax/>
             </header></div>
         );
     }
